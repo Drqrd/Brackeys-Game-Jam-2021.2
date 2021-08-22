@@ -4,11 +4,15 @@ using UnityEngine;
 
 /// <summary>
 /// 
-///  Class: Player
+/// Last Modified: 8/22/21
+/// 
+/// Class: Player
 ///  
-///  Description:
-///     The player controller.
-///     Makes use of a state machine for movement
+/// Author: Justin D'Errico
+///
+/// Description:
+///    The player controller.
+///    Makes use of a state machine for movement
 /// 
 /// </summary>
 

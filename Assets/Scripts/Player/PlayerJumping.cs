@@ -4,14 +4,18 @@ using UnityEngine;
 
 /// <summary>
 /// 
-///  Class: Player
+/// Last Modified: 8/22/21
+/// 
+/// Class: Player
 ///  
-///  Description:
-///     The player controller.
-///     Makes use of a state machine for movement
+/// Author: Justin D'Errico
+///
+/// Description:
+///    The player controller.
+///    Makes use of a state machine for movement
 /// 
 /// </summary>
- 
+
 public class PlayerJumping : PlayerState
 {
     private PlayerMovement p;
@@ -26,24 +30,25 @@ public class PlayerJumping : PlayerState
     public override void Tick()
     {
         // Get the movement inputs
-        Vector3 movement = p.MovementVector();
+        Vector2 movement = p.MovementVector();
 
         // Jump
         if (p.isGrounded)
         {
-            p._rigidbody.velocity = new Vector3(p._rigidbody.velocity.x, movement.y * p.JumpMultiplier, p._rigidbody.velocity.z);
+            p._rigidbody.velocity = new Vector2(p._rigidbody.velocity.x, movement.y * p.JumpMultiplier);
         }
 
         // Allows the player to move in the air when they jump
         if (p.FreeJump)
         {
-            p._rigidbody.velocity = new Vector3(movement.x * p.RunMultiplier, p._rigidbody.velocity.y, movement.z * p.RunMultiplier);
+            movement = LimitMovement(movement);
+            p._rigidbody.velocity = new Vector2(movement.x * p.RunMultiplier, p._rigidbody.velocity.y);
         }
 
         // Switch to different state after jumping is done
         if (p.isGrounded)
         {
-            if (movement == Vector3.zero) { p.SetState(new PlayerStanding(p)); }
+            if (movement == Vector2.zero) { p.SetState(new PlayerStanding(p)); }
             else { p.SetState(new PlayerRunning(p)); }
         }
     }
@@ -56,5 +61,11 @@ public class PlayerJumping : PlayerState
     public override void OnStateExit()
     {
         base.OnStateExit();
+    }
+
+    private Vector2 LimitMovement(Vector2 movement)
+    {
+        if ((p.leftCollision && movement.x > 0f) || (p.rightCollision && movement.x < 0f)) { movement = new Vector2(0f, movement.y); }
+        return movement;
     }
 }

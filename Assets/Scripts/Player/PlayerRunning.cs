@@ -4,11 +4,15 @@ using UnityEngine;
 
 /// <summary>
 /// 
-///  Class: Player
+/// Last Modified: 8/22/21
+/// 
+/// Class: Player
 ///  
-///  Description:
-///     The player controller.
-///     Makes use of a state machine for movement
+/// Author: Justin D'Errico
+///
+/// Description:
+///    The player controller.
+///    Makes use of a state machine for movement
 /// 
 /// </summary>
 
@@ -23,14 +27,14 @@ public class PlayerRunning : PlayerState
     public override void Tick() 
     {
         // Get the movement inputs
-        Vector3 movement = p.MovementVector();
+        Vector2 movement = p.MovementVector();
 
         // If movement requires you to switch states, then do so...
-        if (movement == Vector3.zero) { p.SetState(new PlayerStanding(p)); }
+        if (movement == Vector2.zero) { p.SetState(new PlayerStanding(p)); }
         else if (p.MovementOnYAxis(movement)) { p.SetState(new PlayerJumping(p)); }
 
         // Otherwise move
-        else { p._rigidbody.velocity = new Vector3(movement.x * p.RunMultiplier, p._rigidbody.velocity.y, movement.z * p.RunMultiplier); }
+        else { p._rigidbody.velocity = new Vector2(movement.x * p.RunMultiplier, p._rigidbody.velocity.y); }
     }
 
     public override void OnStateEnter()
