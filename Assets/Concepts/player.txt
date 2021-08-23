@@ -12,6 +12,7 @@
   Has Three main States: Destroy(Raged), Normal and Boosted:
    1. Normal - Just going forward, can jump 
    2. Boosted - After Certain Amount of distance travelled, boost movement for a while and slows randomly(to make more fast paced situation)
+	  Cont. - Player can get hit once in boost without dying (Add complexity, harder to maintain boost but provides free damage taken)
    3. Raged - Destroys Vehicles and everything(Not walls though) that comes in way.
 
    NOTE: for normal and boosted, they can work on the same script. the "boosted" effect can be shown via animation to make it 
