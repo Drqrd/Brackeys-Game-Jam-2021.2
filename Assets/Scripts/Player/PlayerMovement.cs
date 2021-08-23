@@ -6,13 +6,12 @@ using UnityEngine;
 /// 
 /// Last Modified: 8/22/21
 /// 
-/// Class: Player
+/// Class: PlayerMovement
 ///  
 /// Author: Justin D'Errico
 ///
 /// Description:
-///    The player controller.
-///    Makes use of a state machine for movement
+///    Script that inherits player, handles all movement
 /// 
 /// </summary>
 
@@ -47,6 +46,10 @@ public class PlayerMovement : Player
     [Range(0.1f, 10f)]
     private float runMultiplier = 1f;
 
+    [SerializeField]
+    [Range(0.1f, 10f)]
+    private float frictionMultiplier = 1f;
+
     /* - Movement Logic (or for movement logic) - */
     public bool isGrounded      { get; private set; }
     public bool leftCollision   { get; private set; }
@@ -60,8 +63,10 @@ public class PlayerMovement : Player
     private float dtgErrorMargin = .01f;
     private float distToGround;
 
+    private PhysicMaterial friction, noFriction;
+
     /* - State - */
-    private PlayerState currentState;
+    public PlayerState currentState { get; private set; }
 
 
 
@@ -96,7 +101,23 @@ public class PlayerMovement : Player
         private set { runMultiplier = value; }
     }
 
+    public float FrictionMultiplier
+    {
+        get { return FrictionMultiplier; }
+        private set { frictionMultiplier = value; }
+    }
 
+    public PhysicMaterial Friction
+    {
+        get { return friction; }
+        private set { friction = value; }
+    }
+
+    public PhysicMaterial NoFriction
+    {
+        get { return noFriction; }
+        private set { noFriction = value; }
+    }
 
     /*-------------------------*/
 
@@ -108,12 +129,9 @@ public class PlayerMovement : Player
     // On start, the player will be standing
     new private void Start()
     {
-        // Get components
-        _rigidbody = GetComponent<Rigidbody>();
-        _collider  = GetComponent<Collider>();
-        _renderer  = GetComponent<Renderer>();
+        base.Start();
 
-        // Make sure the logic variables that need values, have values
+        // Make sure the variables that need values, have values
         StartupVariables();
 
         // Set the starting state
@@ -133,6 +151,11 @@ public class PlayerMovement : Player
     {
         // distance to ground if the center of the collider is at (0,0,0)
         distToGround = _collider.bounds.extents.y;
+
+        // Physic material resources for applying friction to player to slow them down when standing
+        Friction   = Resources.Load<PhysicMaterial>("PhysicMaterials/Friction");
+        NoFriction = Resources.Load<PhysicMaterial>("PhysicMaterials/NoFriction");
+
     }
 
 
@@ -149,12 +172,14 @@ public class PlayerMovement : Player
         if (currentState != null) { currentState.OnStateEnter(); }
     }
 
+    // Small bool function that returns true if there is x velocity
     public bool MovementOnXAxis(Vector2 v)
     {
         if (v.x > 0f || v.x < 0f) { return true; }
         return false;
     }
 
+    // Small bool function that returns true if there is y velocity
     public bool MovementOnYAxis(Vector2 v)
     {
         if (v.y > 0f || v.y < 0f) { return true; }
@@ -162,12 +187,15 @@ public class PlayerMovement : Player
     }
 
     private bool DetectGround()
-    {
+    {   
+        // the extent of the collider
         float dist = _collider.bounds.extents.x - .01f;
-     
+        
+        // checks at either end of the collider to determine if grounded
         bool right = Physics.Raycast(new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Vector3.down, distToGround + dtgErrorMargin);
         bool left  = Physics.Raycast(new Vector3(transform.position.x - dist, transform.position.y, transform.position.z), Vector3.down, distToGround + dtgErrorMargin);
 
+        // returns true if either side detects ground
         return left || right;
     }
 
@@ -185,10 +213,17 @@ public class PlayerMovement : Player
         return v;
     }
 
+    // If val = true, enable friction, disable if false
+    public void GroundFriction(bool val)
+    {
+        if (val) { _collider.material = Friction; }
+        else { _collider.material = NoFriction; }
+    }
+
 
 
     /* - Collision - */
-
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         string sideHit = DetectCollisionSide(collision);
@@ -253,7 +288,7 @@ public class PlayerMovement : Player
                 break;
         }
     }
-
+    */
     /* - Temp Functions - */ 
     // Temporary location for gravity script
     private void Gravity()
