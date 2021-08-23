@@ -6,23 +6,29 @@ using UnityEngine;
 /// 
 /// Last Modified: 8/22/21
 /// 
-/// Class: Player
+/// Class: PlayerRunning
 ///  
 /// Author: Justin D'Errico
 ///
 /// Description:
-///    The player controller.
-///    Makes use of a state machine for movement
+///    Running state for player
+///   
 /// 
 /// </summary>
 
 public class PlayerRunning : PlayerState
 {
+
+    // Constructor calls
     private PlayerMovement p;
     public PlayerRunning(PlayerMovement p)
     {
         this.p = p;
+        // For identifying the type of PlayerState
+        type = "PlayerRunning";
     }
+
+    public float slowEffect = 1f;
 
     public override void Tick() 
     {
@@ -34,16 +40,21 @@ public class PlayerRunning : PlayerState
         else if (p.MovementOnYAxis(movement)) { p.SetState(new PlayerJumping(p)); }
 
         // Otherwise move
-        else { p._rigidbody.velocity = new Vector2(movement.x * p.RunMultiplier, p._rigidbody.velocity.y); }
+        movement = ApplyEffects(movement);
+        p._rigidbody.velocity = new Vector2(movement.x * p.RunMultiplier, p._rigidbody.velocity.y);
     }
 
     public override void OnStateEnter()
     {
+        // Changes color for now, to identify the state the player is in
         p._renderer.material.color = Color.green;
     }
 
-    public override void OnStateExit()
+    // Applies all movement effects when running
+    private Vector2 ApplyEffects(Vector2 movement)
     {
-        base.OnStateExit();
+        // slows down the player when given a slowEffect value, does not slow jumping
+        movement = new Vector3 (movement.x * slowEffect, movement.y);
+        return movement;
     }
 }

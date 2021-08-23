@@ -6,21 +6,26 @@ using UnityEngine;
 /// 
 /// Last Modified: 8/22/21
 /// 
-/// Class: Player
+/// Class: PlayerState
 ///  
 /// Author: Justin D'Errico
 ///
 /// Description:
-///    The player controller.
-///    Makes use of a state machine for movement
+///    Player state parent class, is inherited by all states
 /// 
 /// </summary>
 
 public abstract class PlayerState
 {
+    // type declaration for determining what state
+    public string type = "PlayerDefault";
+    
+    // Needed in each state function, is called per FixedUpdate
     public abstract void Tick();
-
-    public virtual void HandleInputs() { }
+    
+    // Called when entering state
     public virtual void OnStateEnter() { }
+
+    // Called when exiting state
     public virtual void OnStateExit() { }
 }

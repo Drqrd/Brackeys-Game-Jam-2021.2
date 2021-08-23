@@ -6,22 +6,25 @@ using UnityEngine;
 /// 
 /// Last Modified: 8/22/21
 /// 
-/// Class: Player
+/// Class: PlayerStanding
 ///  
 /// Author: Justin D'Errico
 ///
 /// Description:
-///    The player controller.
-///    Makes use of a state machine for movement
+///    Standing state for player
 /// 
 /// </summary>
 
 public class PlayerStanding : PlayerState
 {
+    
+    // Constructor calls
     private PlayerMovement p;
     public PlayerStanding(PlayerMovement p)
     {
         this.p = p;
+        // For identifying the type of PlayerState
+        type = "PlayerStanding";
     }
 
     public override void Tick()
@@ -39,11 +42,16 @@ public class PlayerStanding : PlayerState
 
     public override void OnStateEnter()
     {
+        // Changes color for now, to identify the state the player is in
         p._renderer.material.color = Color.blue;
+
+        // Enables ground friction on entering this state to slow the player down
+        p.GroundFriction(true);
     }
 
     public override void OnStateExit()
     {
-        base.OnStateExit();
+        // Removes ground friction after leaving state
+        p.GroundFriction(false);
     }
 }
