@@ -662,18 +662,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1363066512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48470a4d5994c094591af597b0449fab, type: 3}
+  m_Script: {fileID: 11500000, guid: 6437837922908a247a77798438fe24fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 97
-  right: 100
-  jump: 32
-  freeJump: 1
-  immediateStop: 0
-  jumpMultiplier: 17
-  runMultiplier: 5
-  frictionMultiplier: 1
-  dtgErrorMargin: 0.01
+  up: 32
+  moveSpeedMultiplier: 1
 --- !u!4 &1363066518
 Transform:
   m_ObjectHideFlags: 0
