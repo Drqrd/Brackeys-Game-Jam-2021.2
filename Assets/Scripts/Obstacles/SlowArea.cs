@@ -39,22 +39,13 @@ public class SlowArea : Area
 
     private void OnTriggerStay(Collider other)
     {
-        // Gets the current state in PlayerMovement
-        PlayerState stateRef = playerRef.GetComponent<PlayerMovement>().currentState;
-
-        // If it is a running state, assign variable and apply slow effect
-        PlayerRunning runState = stateRef.type == "PlayerRunning" ? stateRef as PlayerRunning : null;
-        if (runState != null) { runState.slowEffect = slowPercent; }
+        // Applies the slow effect when inside the collider
+        playerRef.GetComponent<Player>().SlowEffect = slowPercent;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // Gets the current state in PlayerMovement
-        PlayerState stateRef = playerRef.GetComponent<PlayerMovement>().currentState;
-
-        // If it is a running state, assign variable and remove slow effect
-        PlayerRunning runState = stateRef.type == "PlayerRunning" ? stateRef as PlayerRunning : null;
-        if (runState != null) { runState.slowEffect = 1f; }
+        playerRef.GetComponent<Player>().SlowEffect = 1f;
     }
 
     // Draws a different colored box to differentiate between other areas in editor mode
