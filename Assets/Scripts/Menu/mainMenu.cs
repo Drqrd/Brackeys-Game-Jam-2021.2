@@ -25,9 +25,14 @@ public class mainMenu : MonoBehaviour
     private int buttonSelected = 0; //0= default, 1 = play, 2= stats, 3 = exit, 
     private SpriteRenderer selectedSprite;
 
+    // reference to pause
+    private Main gameRef;
 
     private void Start(){
         selectedSprite = gameObject.GetComponent<SpriteRenderer>();
+
+        // gets the Main component
+        gameRef = GameObject.Find("GameController").GetComponent<Main>();
     }
 
     private void Update()
@@ -65,6 +70,9 @@ public class mainMenu : MonoBehaviour
 
     private void startGame(){
         gameObject.SetActive(false);
+
+        // Little bit that will unpause other parts of the game
+        gameRef.paused = false;
     }
 
     private void loadStats(){
