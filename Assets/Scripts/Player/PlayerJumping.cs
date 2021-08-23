@@ -6,23 +6,25 @@ using UnityEngine;
 /// 
 /// Last Modified: 8/22/21
 /// 
-/// Class: Player
+/// Class: PlayerJumping
 ///  
 /// Author: Justin D'Errico
 ///
 /// Description:
-///    The player controller.
-///    Makes use of a state machine for movement
+///    The state the player goes into when jumping
 /// 
 /// </summary>
 
 public class PlayerJumping : PlayerState
 {
-    private PlayerMovement p;
 
+    // Constructor calls
+    private PlayerMovement p;
     public PlayerJumping(PlayerMovement p)
     {
         this.p = p;
+        // For identifying the type of PlayerState
+        type = "PlayerJumping";
     }
 
 
@@ -32,7 +34,7 @@ public class PlayerJumping : PlayerState
         // Get the movement inputs
         Vector2 movement = p.MovementVector();
 
-        // Jump
+        // Jump if player is grounded
         if (p.isGrounded)
         {
             p._rigidbody.velocity = new Vector2(p._rigidbody.velocity.x, movement.y * p.JumpMultiplier);
@@ -41,11 +43,11 @@ public class PlayerJumping : PlayerState
         // Allows the player to move in the air when they jump
         if (p.FreeJump)
         {
-            movement = LimitMovement(movement);
+            // movement = LimitMovement(movement);
             p._rigidbody.velocity = new Vector2(movement.x * p.RunMultiplier, p._rigidbody.velocity.y);
         }
 
-        // Switch to different state after jumping is done
+        // Switch to different state after jumping is done, when player is grounded
         if (p.isGrounded)
         {
             if (movement == Vector2.zero) { p.SetState(new PlayerStanding(p)); }
@@ -55,17 +57,15 @@ public class PlayerJumping : PlayerState
 
     public override void OnStateEnter()
     {
+        // Changes color for now, to identify the state the player is in
         p._renderer.material.color = Color.red;
     }
 
-    public override void OnStateExit()
-    {
-        base.OnStateExit();
-    }
-
+    /*
     private Vector2 LimitMovement(Vector2 movement)
     {
         if ((p.leftCollision && movement.x > 0f) || (p.rightCollision && movement.x < 0f)) { movement = new Vector2(0f, movement.y); }
         return movement;
     }
+    */
 }
