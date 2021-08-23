@@ -1,0 +1,20 @@
+  //BASE //
+1. Travels in a straight direction, as time goes on, player's velocity increases. 
+2. Player can die from hitting obstacles in normal and boosted modes.
+3. Player can kill humans in normal and boosted modes, while obstacles can be destroyed only in raged mode.
+4. Player floats above the ground by a bit(reduces need for walk animation, no shadows too), and can jump.
+5. Player dies only when it hits a obstacle(non human) head on, he can still jump on top of them.
+
+
+
+
+  //STATES
+Has Three main Stats: Destroy(Raged), Normal and Boosted:
+   1. Normal - Just going forward, can jump 
+   2. Boosted - After Certain Amount of distance travelled, boost movement for a while and slows randomly(to make more fast paced situation)
+   3. Raged - Destroys Vehicles and everything(Not walls though) that comes in way.
+
+   NOTE: for normal and boosted, they can work on the same script. the "boosted" effect can be shown via animation to make it 
+
+
+   

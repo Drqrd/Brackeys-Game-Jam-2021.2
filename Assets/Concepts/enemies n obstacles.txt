@@ -1,0 +1,8 @@
+  //CAMERA AND BACKGROUNDS
+1. Camera moves in same velocity as player, if player hits a wall and is unable to move forward, it still goes on.
+2. If player gets stuck and camera passes the player, he dies.
+3. Ground for the player the walk on will spawn as he moves, and those passed the camera will be destroyed. 
+
+ 
+
+    //OBSTACLES BEHAVIOURS
