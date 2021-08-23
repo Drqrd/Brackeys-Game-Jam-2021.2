@@ -9,7 +9,7 @@
 
 
   //STATES
-Has Three main Stats: Destroy(Raged), Normal and Boosted:
+  Has Three main States: Destroy(Raged), Normal and Boosted:
    1. Normal - Just going forward, can jump 
    2. Boosted - After Certain Amount of distance travelled, boost movement for a while and slows randomly(to make more fast paced situation)
    3. Raged - Destroys Vehicles and everything(Not walls though) that comes in way.
