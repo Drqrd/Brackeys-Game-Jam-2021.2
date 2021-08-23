@@ -20,15 +20,25 @@ public class PlayerNormal : PlayerState
 {
     // Constructor
     private Player playerRef;
-    public PlayerNormal(Player playerRef) : base(playerRef)
+    private Main gameRef;
+    public PlayerNormal(Player playerRef, Main gameRef) : base(playerRef, gameRef)
     {
         this.playerRef = playerRef;
+        this.gameRef = gameRef;
     }
 
     // Tick called every FixedUpdate in Player
     public override void Tick()
     {
-        if (Input.GetKeyDown(playerRef.Up) && playerRef.isGrounded) { playerRef.MovePlayer(); }
+        // First check if dead
+
+        // if paused, pause. Else, do work
+        if (gameRef.paused) { playerRef.SetState(new PlayerPaused(playerRef, gameRef, this)); }
+        else
+        {
+            // Move player if the player is not grounded
+            if (Input.GetKey(playerRef.Up) && playerRef.isGrounded) { playerRef.MovePlayer(); }
+        }
     }
 
     // Called when entering state

@@ -19,9 +19,11 @@ public abstract class PlayerState
 {
     // Constructor
     Player playerRef;
-    public PlayerState(Player playerRef)
+    Main gameRef;
+    public PlayerState(Player playerRef, Main gameRef)
     {
         this.playerRef = playerRef;
+        this.gameRef = gameRef;
     }
 
 
