@@ -33,9 +33,17 @@ public class Player : MonoBehaviour
 
     [Header("Movement Modifiers")]
     [SerializeField]
-    [Range(1f, 10f)]
-    private float moveSpeedMultiplier = 1f;
-    public float MoveSpeedMultiplier { get { return moveSpeedMultiplier; } private set { moveSpeedMultiplier = value; } }
+    [Range(1f, 100f)]
+    private float jumpPowerMultiplier = 25f;
+    public float JumpPowerMultiplier { get { return jumpPowerMultiplier; } private set { jumpPowerMultiplier = value; } }
+
+    [SerializeField]
+    [Range(9.8f, 40f)]
+    private float gravity = 9.8f;
+
+    [SerializeField]
+    [Range(4, 8)]
+    private int maxJumpHeight = 4;
 
     /* - Movement Effects - */
     private float slowEffect = 1f;
@@ -45,9 +53,14 @@ public class Player : MonoBehaviour
     public bool isGrounded { get; set; }
     private float distToGround;
     private float dtgErrorMargin = .01f;
+    private float groundY;
+
 
     /* - State - */
     public PlayerState currentState { get; private set; }
+
+    /* - Game Controller Reference - */
+    private Main gameRef;
 
 
     /*-------------------------*/
@@ -62,10 +75,17 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
         _renderer = GetComponent<Renderer>();
+        gameRef = GameObject.Find("GameController").GetComponent<Main>();
 
+        // Various variables that need values at runtime
         distToGround = _collider.bounds.extents.y;
+        groundY = transform.position.y;
 
-        SetState(new PlayerNormal(this));
+        // Set gravity = to value in inspector
+        Physics.gravity = new Vector3(0f, -gravity, 0f);
+
+        // Start in the paused state for the main menu
+        SetState(new PlayerPaused(this, gameRef));
     }
 
     /* - FixedUpdate for Rigidbody Physics / Movement - */
@@ -75,8 +95,6 @@ public class Player : MonoBehaviour
         isGrounded = DetectGround();
         currentState.Tick();
     }
-
-
 
     /* - State Functions - */
 
@@ -93,9 +111,11 @@ public class Player : MonoBehaviour
 
 
     /* - Movement Functions - */
+
+    // Moves the player up when key is pressed
     public void MovePlayer()
     {
-        _rigidbody.velocity = new Vector2(0f, 1f * moveSpeedMultiplier);
+        _rigidbody.velocity = new Vector2(0f, 1f * jumpPowerMultiplier);
     }
 
     private bool DetectGround()
@@ -110,6 +130,12 @@ public class Player : MonoBehaviour
         // returns true if either side detects ground
         return left || right;
     }
+
+    public bool AtMaxJumpHeight()
+    {
+        return transform.position.y > groundY + maxJumpHeight;
+    }
+
 
 
     /*-------------------------*/
