@@ -19,12 +19,13 @@ using UnityEngine;
 public class Area : MonoBehaviour
 {
     // All inherited members will need to reference the player
-    protected GameObject playerRef;
+    protected GameObject playerRef, gameRef;
 
     // Get player reference
     private void Start()
     {
         playerRef = GameObject.Find("Player");
+        gameRef = GameObject.Find("GameController");
     }
 
     // A little gizmo to see the area in which the class operates
