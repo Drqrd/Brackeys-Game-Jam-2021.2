@@ -17,6 +17,14 @@ using UnityEngine;
 
 public abstract class PlayerState
 {
+    // Constructor
+    Player playerRef;
+    public PlayerState(Player playerRef)
+    {
+        this.playerRef = playerRef;
+    }
+
+
     // type declaration for determining what state
     public string type = "PlayerDefault";
     
