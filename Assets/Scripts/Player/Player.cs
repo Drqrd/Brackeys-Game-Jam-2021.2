@@ -40,10 +40,6 @@ public class Player : MonoBehaviour
     public float JumpPowerMultiplier { get { return jumpPowerMultiplier; } private set { jumpPowerMultiplier = value; } }
 
     [SerializeField]
-    [Range(9.8f, 40f)]
-    private float gravity = 9.8f;
-
-    [SerializeField]
     [Range(4, 8)]
     private int maxJumpHeight = 4;
 
@@ -59,8 +55,9 @@ public class Player : MonoBehaviour
     private float groundY;
 
 
-    /* - State - */
+    /* - State + Logic - */
     public PlayerState currentState { get; private set; }
+    public bool isDamaged { get; set; }
 
     /* - Game Controller Reference - */
     private Main gameRef;
@@ -76,16 +73,14 @@ public class Player : MonoBehaviour
     {
         // Get components for referencing
         _rigidbody = GetComponent<Rigidbody>();
-        _collider = GetComponent<Collider>();
+        // Get foot collider
+        _collider = transform.GetChild(2).GetComponent<Collider>();
         _renderer = GetComponent<SpriteRenderer>();
         gameRef = GameObject.Find("GameController").GetComponent<Main>();
 
         // Various variables that need values at runtime
         distToGround = _collider.bounds.extents.y;
         groundY = transform.position.y;
-
-        // Set gravity = to value in inspector
-        Physics.gravity = new Vector3(0f, -gravity, 0f);
 
         // Start in the paused state for the main menu
         SetState(new PlayerPaused(this, gameRef));
@@ -97,6 +92,7 @@ public class Player : MonoBehaviour
         // movement script checks everytime if the player is grounded or not
         isGrounded = DetectGround();
         currentState.Tick();
+
     }
 
     /* - State Functions - */
@@ -127,8 +123,8 @@ public class Player : MonoBehaviour
         float dist = _collider.bounds.extents.x - .01f;
 
         // checks at either end of the collider to determine if grounded
-        bool right = Physics.Raycast(new Vector3(transform.position.x + dist, transform.position.y, transform.position.z), Vector3.down, distToGround + dtgErrorMargin);
-        bool left = Physics.Raycast(new Vector3(transform.position.x - dist, transform.position.y, transform.position.z), Vector3.down, distToGround + dtgErrorMargin);
+        bool right = Physics.Raycast(new Vector3(transform.position.x + dist, _collider.bounds.center.y, transform.position.z), Vector3.down, distToGround + dtgErrorMargin);
+        bool left = Physics.Raycast(new Vector3(transform.position.x - dist, _collider.bounds.center.y, transform.position.z), Vector3.down, distToGround + dtgErrorMargin);
 
         // returns true if either side detects ground
         return left || right;
