@@ -15,23 +15,33 @@ using UnityEngine;
 /// 
 /// </summary>
 
-[RequireComponent(typeof(BoxCollider))]
-public class Area : MonoBehaviour
+public abstract class Area : MonoBehaviour
 {
     // All inherited members will need to reference the player
-    protected GameObject playerRef, gameRef;
+    protected GameObject playerRef;
+    protected GameObject gameRef;
+    protected Rigidbody _rb;
+    protected bool isEnabled;
 
     // Get player reference
-    private void Start()
+    protected void Start()
     {
         playerRef = GameObject.Find("Player");
         gameRef = GameObject.Find("GameController");
+        _rb = GetComponent<Rigidbody>();
+    }
+
+    public abstract void Teleport();
+
+    protected virtual void Move()
+    {
+        _rb.velocity = new Vector3(-gameRef.GetComponent<Main>().GameSpeed,0f,0f);
     }
 
     // A little gizmo to see the area in which the class operates
     protected virtual void OnDrawGizmos()
     {
         Gizmos.color = new Color(0f, 0f, 0f, 0.5f);
-        Gizmos.DrawCube(transform.position, GetComponent<BoxCollider>().bounds.size);
+        Gizmos.DrawCube(GetComponent<BoxCollider>().bounds.center, GetComponent<BoxCollider>().bounds.size);
     }
 }

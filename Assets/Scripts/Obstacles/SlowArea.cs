@@ -23,18 +23,9 @@ public class SlowArea : Area
     [Range(0f, 1f)]
     private float slowPercent = .5f;
 
-    [SerializeField]
-    [Range(1f, 10f)]
-    private float length = 1f;
-
-    [SerializeField]
-    [Range(1f, 10f)]
-    private float width = 1f;
-
-    // For easy adjustments in editor
-    private void OnValidate()
+    public override void Teleport()
     {
-        GetComponent<BoxCollider>().size = new Vector2(length, width);
+        throw new System.NotImplementedException();
     }
 
     private void OnTriggerStay(Collider other)
@@ -52,6 +43,6 @@ public class SlowArea : Area
     new private void OnDrawGizmos()
     {
         Gizmos.color = new Color(.65f, .16f, .16f, .5f);
-        Gizmos.DrawCube(transform.position, GetComponent<BoxCollider>().bounds.size);
+        Gizmos.DrawCube(GetComponent<BoxCollider>().bounds.center, GetComponent<BoxCollider>().bounds.size);
     }
 }
