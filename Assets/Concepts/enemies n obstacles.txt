@@ -9,10 +9,11 @@
 
  
 
-    // BACKGROUNDS
+    // BACKGROUNDS 
 1. Has five Layers: Closest Ruins(CLOSEST),   Abondened city view,   Far away city view,   Clouds,  Sky(FARTHEST)
 2. Closest Ruins will spawn above ground, such as destroyed buildings and ruins, broken machines, bots, vehicles, etc.
-3. Closest Ruins are for adding a feel to the game, cannot be interactable in any way
+3. Closest Ruins are for adding a feel to the game, cannot be interactable in any way, 
+	just like obstacles(check below in obstacles section) they have small, large and long sizes 
 4. The rest of the background will be part of parallax background(no need to script- all handled by GameEngine)
 
 
@@ -22,7 +23,7 @@
 2. Obstacles are of two types: Static and Interactable :-
     --STATIC--
 	a. includes objects that can be hit only in raged mode, player dies when hitting these in normal or boosted(ignoring boost immunity for one hit)
-	b. they vary in sizes: small(16x16), large(32x32), long(16x32)
+	b. they vary in sizes: small(16x16), tall(16x32), long(32x16)
 	c. will have spaces between, so player actually has chance to jump, and not make it impossible to pass.
     --INTERACTABLES--
 	a. basically humans and other entities that can be killed, adds point depending on rarity.
