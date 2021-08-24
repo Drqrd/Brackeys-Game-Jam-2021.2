@@ -24,11 +24,16 @@ public class PlayerBoosted : PlayerState
     {
         this.playerRef = playerRef;
         this.gameRef = gameRef;
+
+        type = "PlayerBoosted";
     }
 
     // Tick called every FixedUpdate in Player
     public override void Tick()
     {
+        // if damaged, go to playerNormal
+        if (playerRef.isDamaged) { playerRef.SetState(new PlayerNormal(playerRef, gameRef)); }
+
         // if paused, pause. Else, do work
         if (gameRef.paused) { playerRef.SetState(new PlayerPaused(playerRef, gameRef, this)); }
         else
