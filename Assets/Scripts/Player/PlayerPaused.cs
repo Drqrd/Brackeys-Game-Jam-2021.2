@@ -13,6 +13,8 @@ public class PlayerPaused : PlayerState
         this.playerRef = playerRef;
         this.gameRef = gameRef;
         this.previousState = previousState;
+
+        type = "PlayerPaused";
     }
 
     // Tick called every FixedUpdate in Player

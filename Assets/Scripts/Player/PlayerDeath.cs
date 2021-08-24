@@ -11,12 +11,14 @@ public class PlayerDeath : PlayerState
     {
         this.playerRef = playerRef;
         this.gameRef = gameRef;
+
+        type = "PlayerDeath";
     }
 
     // Tick called every FixedUpdate in Player
     public override void Tick()
     {
-        if (Input.GetKeyDown(playerRef.Up) && playerRef.isGrounded) { playerRef.MovePlayer(); }
+
     }
 
     // Called when entering state

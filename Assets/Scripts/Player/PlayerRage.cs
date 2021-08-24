@@ -24,6 +24,8 @@ public class PlayerRage : PlayerState
     {
         this.playerRef = playerRef;
         this.gameRef = gameRef;
+
+        type = "PlayerRage";
     }
 
     // Tick called every FixedUpdate in Player
