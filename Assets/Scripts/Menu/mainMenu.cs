@@ -22,7 +22,7 @@ public class mainMenu : MonoBehaviour
 {
     [SerializeField]
     private Sprite[] buttonSelectables;
-    private int buttonSelected = 0; //0= default, 1 = play, 2= stats, 3 = exit, 
+    private int buttonSelected = 1; //0= default, 1 = play, 2= stats, 3 = exit, 
     private SpriteRenderer selectedSprite;
 
     // reference to pause
@@ -52,7 +52,6 @@ public class mainMenu : MonoBehaviour
     }
 
     private void buttonClicks(){
-        print(1);
         switch(buttonSelected){
             case 1:
                 this.startGame();

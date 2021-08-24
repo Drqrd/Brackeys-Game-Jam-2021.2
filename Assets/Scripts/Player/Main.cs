@@ -78,7 +78,7 @@ public class Main : MonoBehaviour
             {
                 timeElapsed -= timeInterval;
                 clock += timeInterval;
-                Debug.Log(clock);
+                //Debug.Log(clock);
             }
         }
     }

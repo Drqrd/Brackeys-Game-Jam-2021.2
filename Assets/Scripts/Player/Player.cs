@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     public Renderer _renderer { get; private set; }
     public Player _player { get { return this; } }
 
+
+
     /* - Movement - */
     [Header("Movement Keys")]
     [SerializeField]
@@ -44,6 +46,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     [Range(4, 8)]
     private int maxJumpHeight = 4;
+
 
     /* - Movement Effects - */
     private float slowEffect = 1f;
@@ -74,7 +77,7 @@ public class Player : MonoBehaviour
         // Get components for referencing
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
-        _renderer = GetComponent<Renderer>();
+        _renderer = GetComponent<SpriteRenderer>();
         gameRef = GameObject.Find("GameController").GetComponent<Main>();
 
         // Various variables that need values at runtime

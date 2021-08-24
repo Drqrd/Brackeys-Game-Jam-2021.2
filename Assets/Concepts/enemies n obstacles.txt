@@ -11,10 +11,9 @@
 
     // BACKGROUNDS 
 1. Has five Layers: Closest Ruins(CLOSEST),   Abondened city view,   Far away city view,   Clouds,  Sky(FARTHEST)
-2. Closest Ruins will spawn above ground, such as destroyed buildings and ruins, broken machines, bots, vehicles, etc.
-3. Closest Ruins are for adding a feel to the game, cannot be interactable in any way, 
-	just like obstacles(check below in obstacles section) they have small, large and long sizes 
-4. The rest of the background will be part of parallax background(no need to script- all handled by GameEngine)
+2. The background will be part of parallax background
+3. Some Objects will also spawn as background(with reduced saturation and value so it reads as a non-interactable to the player's eyes). 
+	Example: Small rocks, grasses, broken building parts, etc.
 
 
 
