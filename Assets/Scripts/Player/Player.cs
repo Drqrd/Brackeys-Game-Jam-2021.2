@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer _renderer { get; private set; }
 
     public Player _player { get { return this; } }
-
+    
     private Vector3 initialPosition;
 
     [Header("Player Settings")]
@@ -125,6 +125,7 @@ public class Player : MonoBehaviour
     public void movePlayer()
     {
         _rigidbody.velocity = new Vector2( movementSpeed, _rigidbody.velocity.y);
+        Camera.main.transform.position += new Vector3(_rigidbody.velocity.x, 0f, 0f) * Time.deltaTime;
         gameRef.distanceTraveled =  Mathf.Sqrt(Mathf.Pow(transform.position.x - initialPosition.x, 2));
     }
 
