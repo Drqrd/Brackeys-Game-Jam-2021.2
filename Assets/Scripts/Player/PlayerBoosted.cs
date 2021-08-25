@@ -31,6 +31,7 @@ public class PlayerBoosted : PlayerState
     // Tick called every FixedUpdate in Player
     public override void Tick()
     {
+        playerRef.movePlayer();
         // if damaged, go to playerNormal
         if (playerRef.isDamaged) { playerRef.SetState(new PlayerNormal(playerRef, gameRef)); }
 
@@ -39,13 +40,14 @@ public class PlayerBoosted : PlayerState
         else
         {
             // Move player if the player is not grounded
-            if (Input.GetKey(playerRef.Up) && playerRef.isGrounded) { playerRef.MovePlayer(); }
+            if (Input.GetKey(playerRef.Up) && playerRef.isGrounded) { playerRef.playerJump(); }
         }
     }
 
     // Called when entering state
     public override void OnStateEnter()
     {
-        playerRef._renderer.material.color = Color.green;
+        playerRef._renderer.sprite = playerRef.playerSprites[1];
+        playerRef.movementSpeed = 6f;
     }
 }

@@ -32,6 +32,7 @@ public class PlayerPaused : PlayerState
     // Called when entering state
     public override void OnStateEnter()
     {
-        playerRef._renderer.material.color = Color.gray;
+        playerRef._renderer.sprite = playerRef.playerSprites[3];
+        
     }
 }

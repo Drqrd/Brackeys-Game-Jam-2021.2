@@ -36,18 +36,27 @@ public class PlayerNormal : PlayerState
         if (playerRef.isDamaged) { playerRef.SetState(new PlayerDeath(playerRef, gameRef)); }
 
         // if paused, pause. Else, do work
-        if (gameRef.paused) { playerRef.SetState(new PlayerPaused(playerRef, gameRef, this)); }
+        if (gameRef.paused)
+        {
+            playerRef.SetState(new PlayerPaused(playerRef, gameRef, this)); 
+        }
         else
         {
-            if (playerRef.AtMaxJumpHeight()) { playerRef._rigidbody.velocity = Vector3.zero; }
+            playerRef.movePlayer();
+            if (playerRef.AtMaxJumpHeight()){ 
+                playerRef._rigidbody.velocity = Vector3.zero;
+            }
             // Move player if the player is not grounded
-            else if (Input.GetKey(playerRef.Up) && playerRef.isGrounded) { playerRef.MovePlayer(); }
+            else if (Input.GetKey(playerRef.Up) && playerRef.isGrounded){
+                playerRef.playerJump(); 
+            }
         }
     }
 
     // Called when entering state
     public override void OnStateEnter()
     {
-        playerRef._renderer.material.color = Color.blue;
+        playerRef._renderer.sprite = playerRef.playerSprites[0];
+        playerRef.movementSpeed = 4f;
     }
 }

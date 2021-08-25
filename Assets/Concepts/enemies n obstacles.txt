@@ -10,7 +10,7 @@
  
 
     // BACKGROUNDS 
-1. Has five Layers: Closest Ruins(CLOSEST),   Abondened city view,   Far away city view,   Clouds,  Sky(FARTHEST)
+1. Has five Layers: Closest Ruins(CLOSEST),   Abondened city view,   Far away city view,   Faded City,  Sky(FARTHEST)
 2. The background will be part of parallax background
 3. Some Objects will also spawn as background(with reduced saturation and value so it reads as a non-interactable to the player's eyes). 
 	Example: Small rocks, grasses, broken building parts, etc.

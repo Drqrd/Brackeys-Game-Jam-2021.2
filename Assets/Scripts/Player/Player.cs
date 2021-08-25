@@ -22,10 +22,15 @@ public class Player : MonoBehaviour
     /* - Components - */
     public Rigidbody _rigidbody { get; private set; }
     public Collider _collider { get; private set; }
-    public Renderer _renderer { get; private set; }
+    public SpriteRenderer _renderer { get; private set; }
+
     public Player _player { get { return this; } }
 
+    private Vector3 initialPosition;
 
+    [Header("Player Settings")]
+    [SerializeField]
+    public Sprite[] playerSprites;
 
     /* - Movement - */
     [Header("Movement Keys")]
@@ -43,6 +48,9 @@ public class Player : MonoBehaviour
     [Range(4, 8)]
     private int maxJumpHeight = 4;
 
+    public float movementSpeed = 4f;
+
+
 
     /* - Movement Effects - */
     private float slowEffect = 1f;
@@ -53,6 +61,7 @@ public class Player : MonoBehaviour
     private float distToGround;
     private float dtgErrorMargin = .01f;
     private float groundY;
+    
 
 
     /* - State + Logic - */
@@ -81,6 +90,7 @@ public class Player : MonoBehaviour
         // Various variables that need values at runtime
         distToGround = _collider.bounds.extents.y;
         groundY = transform.position.y;
+        initialPosition = transform.position;
 
         // Start in the paused state for the main menu
         SetState(new PlayerPaused(this, gameRef));
@@ -112,9 +122,15 @@ public class Player : MonoBehaviour
     /* - Movement Functions - */
 
     // Moves the player up when key is pressed
-    public void MovePlayer()
+    public void movePlayer()
     {
-        _rigidbody.velocity = new Vector2(0f, 1f * jumpPowerMultiplier);
+        _rigidbody.velocity = new Vector2( movementSpeed, _rigidbody.velocity.y);
+        gameRef.distanceTraveled =  Mathf.Sqrt(Mathf.Pow(transform.position.x - initialPosition.x, 2));
+    }
+
+    public void playerJump()
+    {
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 1f * jumpPowerMultiplier);
     }
 
     private bool DetectGround()

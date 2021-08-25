@@ -31,18 +31,20 @@ public class PlayerRage : PlayerState
     // Tick called every FixedUpdate in Player
     public override void Tick()
     {
+        playerRef.movePlayer();
         // if paused, pause. Else, do work
         if (gameRef.paused) { playerRef.SetState(new PlayerPaused(playerRef, gameRef, this)); }
         else
         {
             // Move player if the player is not grounded
-            if (Input.GetKey(playerRef.Up) && playerRef.isGrounded) { playerRef.MovePlayer(); }
+            if (Input.GetKey(playerRef.Up) && playerRef.isGrounded) { playerRef.playerJump(); }
         }
     }
 
     // Called when entering state
     public override void OnStateEnter()
     {
-        playerRef._renderer.material.color = Color.red;
+        playerRef._renderer.sprite = playerRef.playerSprites[2];
+        playerRef.movementSpeed = 5f;
     }
 }

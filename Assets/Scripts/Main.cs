@@ -103,6 +103,7 @@ public class Main : MonoBehaviour
             }
         }
         else { Time.timeScale = 0f; }
+        
     }
 
     /* - Game Speed Function - */
