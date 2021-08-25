@@ -9,8 +9,6 @@ public class KillArea : Area
     [SerializeField]
     private Sprite[] sprites;
 
-    public bool teleport;
-
     private void FixedUpdate()
     {
         Move();
@@ -34,7 +32,15 @@ public class KillArea : Area
         Gizmos.color = new Color(1f, 0f, 0f, 1f);
         foreach (Transform child in transform)
         {
-            Gizmos.DrawWireCube(child.GetComponent<BoxCollider>().bounds.center, child.GetComponent<BoxCollider>().bounds.size);
+            if (child.GetComponent<Collider>() as BoxCollider)
+            {
+                Gizmos.DrawWireCube(child.GetComponent<BoxCollider>().bounds.center, child.GetComponent<BoxCollider>().bounds.size);
+            }
+            else if (child.GetComponent<Collider>() as SphereCollider)
+            {
+                Gizmos.DrawWireSphere(child.GetComponent<SphereCollider>().bounds.center, child.GetComponent<SphereCollider>().radius);
+            }
+            
         }
     }
 }
