@@ -24,6 +24,7 @@ public class groundSpawner : MonoBehaviour
     [SerializeField]
     private Sprite bedrockSprite;
 
+    private obstaclesSpawn obstSpawner;
     private Main gameRef;
     private Vector3 playerPos;
 
@@ -46,6 +47,7 @@ public class groundSpawner : MonoBehaviour
     private void Start()
     {
         gameRef = GameObject.Find("GameController").GetComponent<Main>();
+        obstSpawner = GetComponent<obstaclesSpawn>();
         playerPos = GameObject.Find("Player").transform.position;
         lowestSpawnLevel = transform.GetChild(0).transform.position.y;
     }
@@ -72,7 +74,8 @@ public class groundSpawner : MonoBehaviour
         this.checkFurthestPoint();
         float spawnLevel =  this.setSpawnLevel();     
         Vector3 newGroundPos = new Vector3(furthestGroundPos.x + 1, spawnLevel, furthestGroundPos.z);
-        for(int spawnedCount = 0; spawnedCount < spawnDistance_break; spawnedCount++ ){ 
+        obstSpawner.spawnObstacle(newGroundPos);
+        for(int spawnedCount = 0; spawnedCount < Random.Range(spawnDistance_break, spawnDistance_break * 5); spawnedCount++ ){ 
             GameObject groundSpawned = Instantiate(groundPrefab);
             groundSpawned.transform.position = newGroundPos;
             groundSpawned.transform.parent = this.gameObject.transform;

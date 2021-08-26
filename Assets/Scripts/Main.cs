@@ -124,7 +124,7 @@ public class Main : MonoBehaviour
     public void AddPoints(int p)
     {
         points += p;
-        Debug.Log(points);
+        //Debug.Log(points);
     }
 
     /*-------------------------*/
