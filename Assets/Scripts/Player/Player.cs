@@ -89,7 +89,6 @@ public class Player : MonoBehaviour
 
         // Various variables that need values at runtime
         distToGround = _collider.bounds.extents.y;
-        groundY = transform.position.y;
         initialPosition = transform.position;
 
         // Start in the paused state for the main menu
@@ -101,6 +100,7 @@ public class Player : MonoBehaviour
     {
         // movement script checks everytime if the player is grounded or not
         isGrounded = DetectGround();
+        if (isGrounded) { groundY = transform.position.y; }
         currentState.Tick();
 
     }
