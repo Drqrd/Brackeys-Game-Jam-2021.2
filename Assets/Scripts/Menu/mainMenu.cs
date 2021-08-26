@@ -20,13 +20,16 @@ using UnityEngine;
 
 public class mainMenu : MonoBehaviour
 {
-    [SerializeField]
-    private Sprite[] buttonSelectables;
+    [SerializeField]  private Sprite[] buttonSelectables;
+    [SerializeField] private GameObject statsHolder;
+    [SerializeField] private GameObject UICanvas;
+
     private int buttonSelected = 1; //0= default, 1 = play, 2= stats, 3 = exit, 
     private SpriteRenderer selectedSprite;
 
     // reference to pause
     private Main gameRef;
+    
 
     private void Start(){
         selectedSprite = gameObject.GetComponent<SpriteRenderer>();
@@ -69,13 +72,15 @@ public class mainMenu : MonoBehaviour
 
     private void startGame(){
         gameObject.SetActive(false);
-
-        // Little bit that will unpause other parts of the game
+        GameObject.Find("Player").GetComponent<SpriteRenderer>().enabled = true;
         gameRef.paused = false;
     }
 
     private void loadStats(){
-
+        gameObject.SetActive(false);
+        UICanvas.SetActive(true);
+        statsHolder.SetActive(true);
+        statsHolder.GetComponent<statsLoader>().clearStory_loadStats();
     }
 
     private void exitGame(){
