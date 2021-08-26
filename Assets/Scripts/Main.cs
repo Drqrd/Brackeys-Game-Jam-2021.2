@@ -56,6 +56,9 @@ public class Main : MonoBehaviour
     [Range(9.8f, 40f)]
     private float gravity = 9.8f;
 
+    // Points
+    public static int points { get; private set; }
+
 
     /*-------------------------*/
 
@@ -81,6 +84,9 @@ public class Main : MonoBehaviour
         //              the center position                1/2 the extent of what the camera sees in world position      padding
         leftBound     = Camera.main.transform.position.x - (Camera.main.orthographicSize * Screen.width / Screen.height) - 2f;
         teleportPoint = Camera.main.transform.position.x + (Camera.main.orthographicSize * Screen.width / Screen.height) + 2f;
+
+
+        points = 0;
     }
 
     private void FixedUpdate()
@@ -112,6 +118,14 @@ public class Main : MonoBehaviour
         return x / secondsPerMultiplier + 1f;
     }
 
+
+
+    /* - Score Functions - */
+    public void AddPoints(int p)
+    {
+        points += p;
+        Debug.Log(points);
+    }
 
     /*-------------------------*/
 }
