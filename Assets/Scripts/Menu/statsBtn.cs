@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class statsBtn : MonoBehaviour
 {
@@ -55,6 +56,12 @@ public class statsBtn : MonoBehaviour
             storyToogler.SetActive(false);
         }
         currentChapter = 0;
+        statsBar.menuRef.transform.position = new Vector3(Camera.main.transform.position.x, statsBar.menuRef.transform.position.y, statsBar.menuRef.transform.position.z);
+
+        if( GameObject.Find("Player").GetComponent<Player>().currentState.ToString() == "PlayerDeath"){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }   
+            
     }
 
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 
 
+
 /// <summary>
 /// 
 /// Last Modified: 8/23/21
@@ -29,13 +30,14 @@ public class mainMenu : MonoBehaviour
 
     // reference to pause
     private Main gameRef;
+    private Player playerRef;
+
     
 
     private void Start(){
         selectedSprite = gameObject.GetComponent<SpriteRenderer>();
-
-        // gets the Main component
         gameRef = GameObject.Find("GameController").GetComponent<Main>();
+        playerRef = GameObject.Find("Player").GetComponent<Player>();
     }
 
     private void Update()
@@ -74,6 +76,7 @@ public class mainMenu : MonoBehaviour
         gameObject.SetActive(false);
         GameObject.Find("Player").GetComponent<SpriteRenderer>().enabled = true;
         gameRef.paused = false;
+        statsHolder.SetActive(false);
     }
 
     private void loadStats(){

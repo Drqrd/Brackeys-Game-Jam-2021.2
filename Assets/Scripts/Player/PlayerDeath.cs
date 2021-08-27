@@ -25,5 +25,6 @@ public class PlayerDeath : PlayerState
     public override void OnStateEnter()
     {
         playerRef._renderer.material.color = Color.black;
+        gameRef.loadEndGame_stats();
     }
 }

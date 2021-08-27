@@ -40,7 +40,7 @@ public class Main : MonoBehaviour
     // For determining time traveled
     private float startTime;
     public  float endTime { get; set; }
-    private float timeElapsed;
+    public float timeElapsed;
 
     // For clock, used in game function
     private float clock = 0f;
@@ -48,6 +48,7 @@ public class Main : MonoBehaviour
     public float Clock { get { return clock; } }
     /* - Game Mechanics - */
     // For game speed, how fast objects translate across the screen
+    [SerializeField] private GameObject statsBar;
     private float gameSpeed;
     public float GameSpeed { get { return gameSpeed * 3f; } set { gameSpeed = value; } }
     public float leftBound { get; private set; }
@@ -57,8 +58,12 @@ public class Main : MonoBehaviour
     [Range(9.8f, 40f)]
     private float gravity = 9.8f;
 
+
     // Points
     public static int points { get; private set; }
+
+    //References to GameObjects
+    private Player playerRef;
 
 
     /*-------------------------*/
@@ -70,6 +75,7 @@ public class Main : MonoBehaviour
     /* - Initialization - */
     private void Start()
     {
+        playerRef = GameObject.Find("Player").GetComponent<Player>();
         // Game state at start
         paused = true;
 
@@ -129,4 +135,14 @@ public class Main : MonoBehaviour
     }
 
     /*-------------------------*/
+
+    public void loadEndGame_stats(){
+        statsBar.SetActive(true);
+        statsBar.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, statsBar.transform.position.z);
+        statsBar.GetComponent<statsLoader>().setGameData_stats(distanceTraveled, playerRef.killCount, playerRef.obstaclesDestroyed, timeElapsed);
+        statsBar.GetComponent<statsLoader>().loadEndGame_stats();
+    }
+
+
+
 }

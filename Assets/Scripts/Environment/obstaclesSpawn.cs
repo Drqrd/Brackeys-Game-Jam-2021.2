@@ -22,12 +22,19 @@ using UnityEngine;
 public class obstaclesSpawn : MonoBehaviour
 {
     
+    
     public GameObject obstacleHolder;
     public GameObject humansHolder;
+    public GameObject fillersHolder;
 
+
+    [SerializeField] private Sprite[] fillerSprites;
+    [SerializeField] private GameObject fillerPrefab;
     private Object[] longObstacles; 
     private Object[] tallObstacles;
     private Object[] humanObstacles;
+
+
 
 
 
@@ -48,6 +55,7 @@ public class obstaclesSpawn : MonoBehaviour
                 GameObject obstacle = (GameObject) Instantiate(obstaclePrefab);
                 obstPos = new Vector3( Random.Range(obstPos.x, obstPos.x + 2), Random.Range(obstPos.y, obstPos.y + 2), obstPos.z);
                 this.spawnHuman(obstPos);
+                this.spawnFillers(obstPos);
                 obstacle.GetComponent<SpriteRenderer>().sprite = this.changeObstacleSprite(obstacle);
                 obstacle.transform.position = obstPos;
                 obstacle.transform.parent = obstacleHolder.transform;
@@ -70,6 +78,16 @@ public class obstaclesSpawn : MonoBehaviour
             Vector3 humanPos = new Vector3( Random.Range(obstPos.x - 1, obstPos.x + 2), Random.Range(obstPos.y, obstPos.y + 2), obstPos.z);
             human.transform.position = humanPos;
             human.transform.parent = humansHolder.transform;
+        }
+    }
+
+        private void spawnFillers(Vector3 obstPos){
+        if(drawChances(45, 100)){
+            GameObject filler = (GameObject) Instantiate(fillerPrefab);
+            Vector3 fillerPos = new Vector3( Random.Range(obstPos.x - 2, obstPos.x + 3), Random.Range(obstPos.y, obstPos.y + 2), obstPos.z);
+            filler.GetComponent<SpriteRenderer>().sprite = fillerSprites[Random.Range(0, fillerSprites.Length - 1)]; 
+            filler.transform.position = fillerPos;
+            filler.transform.parent = fillersHolder.transform;
         }
     }
 

@@ -1348,6 +1348,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundPrefab: {fileID: 6214501272764276027, guid: 270c8ef31130b28459b797efc10fd048, type: 3}
   bedrockSprite: {fileID: 737931757123880414, guid: 881b5e59581232c439274f9ebac3ca69, type: 3}
+  greenGround:
+  - {fileID: 8153567275189053952, guid: 881b5e59581232c439274f9ebac3ca69, type: 3}
+  - {fileID: 1061286968710116974, guid: 881b5e59581232c439274f9ebac3ca69, type: 3}
+  - {fileID: -2070120651044144175, guid: 881b5e59581232c439274f9ebac3ca69, type: 3}
+  brownGround:
+  - {fileID: -8912932148187528994, guid: 881b5e59581232c439274f9ebac3ca69, type: 3}
+  - {fileID: 2212252398950162629, guid: 881b5e59581232c439274f9ebac3ca69, type: 3}
+  - {fileID: 571574399751487874, guid: 881b5e59581232c439274f9ebac3ca69, type: 3}
+  blueGround:
+  - {fileID: -7518414610081910573, guid: 881b5e59581232c439274f9ebac3ca69, type: 3}
+  - {fileID: -5243557207800311047, guid: 881b5e59581232c439274f9ebac3ca69, type: 3}
+  - {fileID: 7044206216090883021, guid: 881b5e59581232c439274f9ebac3ca69, type: 3}
   furthestGroundPos: {x: 0, y: 0, z: 0}
 --- !u!114 &166189418
 MonoBehaviour:
@@ -1363,6 +1375,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleHolder: {fileID: 1052283195}
   humansHolder: {fileID: 1712010621}
+  fillersHolder: {fileID: 728897754}
+  fillerSprites:
+  - {fileID: -7827274674231944534, guid: fc3c30118a430574f980bf379fc34b45, type: 3}
+  - {fileID: -9214750198373663546, guid: fc3c30118a430574f980bf379fc34b45, type: 3}
+  - {fileID: -7757980288270993102, guid: fc3c30118a430574f980bf379fc34b45, type: 3}
+  - {fileID: -4669302784980609729, guid: fc3c30118a430574f980bf379fc34b45, type: 3}
+  - {fileID: 3193546529723700650, guid: fc3c30118a430574f980bf379fc34b45, type: 3}
+  - {fileID: -5256615083462207292, guid: fc3c30118a430574f980bf379fc34b45, type: 3}
+  fillerPrefab: {fileID: 3033207022362619163, guid: e22990fb7f09f6949859f294111b9516, type: 3}
 --- !u!1 &177440259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,6 +1911,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondsPerMultiplier: 15
   timeInterval: 1
+  statsBar: {fileID: 936798586}
   gravity: 15
 --- !u!4 &254116835
 Transform:
@@ -3211,6 +3233,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 270c8ef31130b28459b797efc10fd048, type: 3}
+--- !u!1 &728897754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 728897755}
+  m_Layer: 0
+  m_Name: Fillers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &728897755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728897754}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2098260642}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &737702147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4223,6 +4275,10 @@ MonoBehaviour:
   canvasStats: {fileID: 1374053864}
   storyRef: {fileID: 2107972966}
   storyBtn: {fileID: 2055791397}
+  playerStatImage: {fileID: 551276119}
+  playerStatImages:
+  - {fileID: 21300000, guid: cea2c648f4d93c0498e36ee31d86a894, type: 3}
+  - {fileID: 21300000, guid: 03f90f697d960574c82ba54d866781e7, type: 3}
 --- !u!1001 &943151144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9618,6 +9674,7 @@ Transform:
   - {fileID: 60253461}
   - {fileID: 166189416}
   - {fileID: 936798587}
+  - {fileID: 728897755}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

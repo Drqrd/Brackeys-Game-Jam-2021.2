@@ -19,11 +19,14 @@ using UnityEngine;
 public class groundSpawner : MonoBehaviour
 { 
     
-    [SerializeField]
-    private GameObject groundPrefab;
-    [SerializeField]
-    private Sprite bedrockSprite;
+    [SerializeField]  private GameObject groundPrefab;
+    [SerializeField]  private Sprite bedrockSprite;
+    [SerializeField] private Sprite[] greenGround;
+    [SerializeField] private Sprite[] brownGround;
+    [SerializeField] private Sprite[] blueGround;
 
+
+    private Sprite currentGround;
     private obstaclesSpawn obstSpawner;
     private Main gameRef;
     private Vector3 playerPos;
@@ -75,14 +78,17 @@ public class groundSpawner : MonoBehaviour
         float spawnLevel =  this.setSpawnLevel();     
         Vector3 newGroundPos = new Vector3(furthestGroundPos.x + 1, spawnLevel, furthestGroundPos.z);
         obstSpawner.spawnObstacle(newGroundPos);
+        this.setGroundSprite();
         for(int spawnedCount = 0; spawnedCount < Random.Range(spawnDistance_break, spawnDistance_break * 5); spawnedCount++ ){ 
             GameObject groundSpawned = Instantiate(groundPrefab);
+            groundSpawned.GetComponent<SpriteRenderer>().sprite = currentGround;
             groundSpawned.transform.position = newGroundPos;
             groundSpawned.transform.parent = this.gameObject.transform;
             this.spawnBedrockLayer(newGroundPos);
             newGroundPos.x ++;
         }
     }
+
 
     private void spawnBedrockLayer(Vector3 newGroundPos){
         float bedrockGroundLevel = newGroundPos.y - 1;
@@ -109,6 +115,17 @@ public class groundSpawner : MonoBehaviour
         if(spawnLVL > highestSpawnLevel)
             spawnLVL = Random.Range(lowestSpawnLevel, highestSpawnLevel - 1);  
         return spawnLVL;
+    }
+
+
+    private void setGroundSprite(){
+        int drawNum = Random.Range(0, 100);
+        if(drawNum < 10)
+            currentGround = blueGround[ Random.Range(0, blueGround.Length - 1) ];
+        else if(drawNum >= 10 && drawNum < 25)
+            currentGround = brownGround[ Random.Range(0, brownGround.Length - 1) ];
+        else
+            currentGround = greenGround[Random.Range(0, greenGround.Length - 1) ];
     }
 
 

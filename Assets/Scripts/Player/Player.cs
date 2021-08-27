@@ -72,6 +72,8 @@ public class Player : MonoBehaviour
 
     public int killCount { get; set; }
 
+    public int obstaclesDestroyed { get; set; }
+
     /* - Game Controller Reference - */
     private Main gameRef;
 
