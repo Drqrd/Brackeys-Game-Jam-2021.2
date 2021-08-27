@@ -47,4 +47,10 @@ public class PlayerRage : PlayerState
         playerRef._renderer.sprite = playerRef.playerSprites[2];
         playerRef.movementSpeed = 5f;
     }
+
+    public override void OnStateExit()
+    {
+        // Make sure any damage incurred doesnt stay after exitting
+        playerRef.isDamaged = false;
+    }
 }
