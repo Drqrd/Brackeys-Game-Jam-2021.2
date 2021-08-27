@@ -56,6 +56,10 @@ public class HumanArea : Area
 
     private void AddPoints()
     {
+        // Add 1 to the kill count
+        playerRef.GetComponent<Player>().killCount += 1;
+
+        // Add points to the score
         gameRef.GetComponent<Main>().AddPoints(points);
     }
 
