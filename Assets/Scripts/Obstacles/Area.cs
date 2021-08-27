@@ -35,7 +35,7 @@ public abstract class Area : MonoBehaviour
 
     protected virtual void Move()
     {
-        _rb.velocity = new Vector3(-gameRef.GetComponent<Main>().GameSpeed,_rb.velocity.y,0f);
+        // _rb.velocity = new Vector3(-gameRef.GetComponent<Main>().GameSpeed,_rb.velocity.y,0f);
     }
 
     // A little gizmo to see the area in which the class operates
