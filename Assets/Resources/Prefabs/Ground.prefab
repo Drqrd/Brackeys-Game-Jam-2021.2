@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6214501272764276025}
   - component: {fileID: 6214501272764276026}
   - component: {fileID: 6214501272764276024}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,4 +109,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2642a95a31cabf44abb9a40fe6dfe5c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   groundFocus: 0
