@@ -48,11 +48,18 @@ public class obstaclesSpawn : MonoBehaviour
                 GameObject obstacle = (GameObject) Instantiate(obstaclePrefab);
                 obstPos = new Vector3( Random.Range(obstPos.x, obstPos.x + 2), Random.Range(obstPos.y, obstPos.y + 2), obstPos.z);
                 this.spawnHuman(obstPos);
+                obstacle.GetComponent<SpriteRenderer>().sprite = this.changeObstacleSprite(obstacle);
                 obstacle.transform.position = obstPos;
                 obstacle.transform.parent = obstacleHolder.transform;
                 obstPos.x++; 
             }
         } 
+    }
+
+
+    private Sprite changeObstacleSprite(GameObject obstacle){
+        KillArea obstKillArea = obstacle.GetComponent<KillArea>();
+        return obstKillArea.sprites[Random.Range(0, obstKillArea.sprites.Length)];
     }
 
 

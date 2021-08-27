@@ -19,7 +19,7 @@ using UnityEngine;
 public class parallax : MonoBehaviour
 {
 
-
+    public int backgroundID;
     [SerializeField]  private float parallaxLevel;
     public GameObject nextBackground;
     private Main gameRef;

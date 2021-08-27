@@ -7,7 +7,7 @@ public class KillArea : Area
     // Sprites array for holding the car sprites
     [Header("Sprites")]
     [SerializeField]
-    private Sprite[] sprites;
+    public Sprite[] sprites;
 
     private void FixedUpdate()
     {
