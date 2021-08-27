@@ -45,6 +45,7 @@ public class Main : MonoBehaviour
     // For clock, used in game function
     private float clock = 0f;
 
+    public float Clock { get { return clock; } }
     /* - Game Mechanics - */
     // For game speed, how fast objects translate across the screen
     private float gameSpeed;
