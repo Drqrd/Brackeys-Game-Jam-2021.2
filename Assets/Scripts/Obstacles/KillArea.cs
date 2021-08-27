@@ -13,6 +13,8 @@ public class KillArea : Area
     [SerializeField]
     private string desName;
 
+    // Points to add when destroyed
+    private int points = 500;
 
     private Sprite[] desSprites;
     new private void Start()
@@ -58,6 +60,8 @@ public class KillArea : Area
         {
             child.GetComponent<ParticleSystem>().Play();
         }
+
+        gameRef.GetComponent<Main>().AddPoints(points);
     }
 
 
