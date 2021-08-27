@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
         movementSpeed = 4f;
 
         // Start in the paused state for the main menu
-        SetState(new PlayerPaused(this, gameRef));
+        SetState(new PlayerRage(this, gameRef));
     }
 
     /* - FixedUpdate for Rigidbody Physics / Movement - */
