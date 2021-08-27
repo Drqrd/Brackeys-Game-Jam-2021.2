@@ -31,6 +31,12 @@ public class BoostArea : Area
     new protected void OnDrawGizmos()
     {
         Gizmos.color = new Color(1f, 0f, 0f, 1f);
+
+        if (GetComponent<Collider>() as BoxCollider)
+        {
+            Gizmos.DrawWireCube(GetComponent<BoxCollider>().bounds.center, GetComponent<BoxCollider>().bounds.size);
+        }
+
         foreach (Transform child in transform)
         {
             if (child.GetComponent<Collider>() as BoxCollider)
