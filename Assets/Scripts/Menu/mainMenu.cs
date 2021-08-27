@@ -84,6 +84,6 @@ public class mainMenu : MonoBehaviour
     }
 
     private void exitGame(){
-
+        Application.Quit();
     }
 }

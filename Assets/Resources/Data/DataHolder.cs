@@ -1,9 +1,4 @@
-using UnityEngine;
 
-public class DataHolder : MonoBehaviour
-{
-    public GameData[] gameData;
-}
 
 public class GameData{
     public string ID;
