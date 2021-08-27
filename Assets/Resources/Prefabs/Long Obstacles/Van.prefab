@@ -35,6 +35,7 @@ Transform:
   - {fileID: 4679305387362012918}
   - {fileID: 4679305387488671108}
   - {fileID: 4679305387557699543}
+  - {fileID: 8489108868342291122}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,8 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 3724212194159242484, guid: a6fbe66ad099f31458834b8e83dc27e4, type: 3}
-  - {fileID: -1793946285424860801, guid: a6fbe66ad099f31458834b8e83dc27e4, type: 3}
+  - {fileID: -1793946285424860801, guid: 3f3a0a2f062af7a4096121d1e95606a1, type: 3}
+  - {fileID: -1793946285424860801, guid: 3f3a0a2f062af7a4096121d1e95606a1, type: 3}
+  desName: Jeep2
 --- !u!212 &4679305387039401938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,7 +95,7 @@ SpriteRenderer:
   m_SortingLayerID: -1232416511
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3724212194159242484, guid: a6fbe66ad099f31458834b8e83dc27e4, type: 3}
+  m_Sprite: {fileID: -1793946285424860801, guid: 3f3a0a2f062af7a4096121d1e95606a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -340,3 +342,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 0.325, z: 1}
   m_Center: {x: 0.19, y: 0.155, z: 0}
+--- !u!1 &5114175506088135161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8489108868342291122}
+  m_Layer: 0
+  m_Name: Particle System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8489108868342291122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5114175506088135161}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4679305387039401932}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

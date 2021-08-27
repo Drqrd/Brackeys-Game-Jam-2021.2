@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3705617429206921974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9027088688411105665}
+  m_Layer: 0
+  m_Name: Particle System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9027088688411105665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3705617429206921974}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4662081638471756405}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4662081638170960327
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +151,7 @@ Transform:
   - {fileID: 4662081638170960326}
   - {fileID: 4662081638363767912}
   - {fileID: 4662081639798543919}
+  - {fileID: 9027088688411105665}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -137,8 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 4407952146132603719, guid: a6fbe66ad099f31458834b8e83dc27e4, type: 3}
-  - {fileID: 6627856803398780110, guid: a6fbe66ad099f31458834b8e83dc27e4, type: 3}
+  - {fileID: 4407952146132603719, guid: 3f3a0a2f062af7a4096121d1e95606a1, type: 3}
+  - {fileID: 6627856803398780110, guid: 3f3a0a2f062af7a4096121d1e95606a1, type: 3}
+  desName: Car1
 --- !u!212 &4662081638471756395
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -179,7 +211,7 @@ SpriteRenderer:
   m_SortingLayerID: -1232416511
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4407952146132603719, guid: a6fbe66ad099f31458834b8e83dc27e4, type: 3}
+  m_Sprite: {fileID: 4407952146132603719, guid: 3f3a0a2f062af7a4096121d1e95606a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

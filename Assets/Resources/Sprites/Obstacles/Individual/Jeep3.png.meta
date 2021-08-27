@@ -1,37 +1,28 @@
 fileFormatVersion: 2
-guid: 3f3a0a2f062af7a4096121d1e95606a1
+guid: 3b80e25291191424d92c462371dd9631
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4407952146132603719
-    second: long_obstacles_0
+      213: 4443959578131349203
+    second: Jeep3_1
   - first:
-      213: -7792790312505071106
-    second: long_obstacles_1
+      213: 8120313400931331206
+    second: Jeep3_2
   - first:
-      213: 6627856803398780110
-    second: long_obstacles_2
+      213: 577004076676361102
+    second: Jeep3_3
   - first:
-      213: 3724212194159242484
-    second: long_obstacles_3
+      213: 3840549397505894739
+    second: Jeep3_4
   - first:
-      213: -1793946285424860801
-    second: long_obstacles_4
+      213: -5080479579918395879
+    second: Jeep3_5
   - first:
-      213: 1577542982619528250
-    second: long_obstacles_5
+      213: 3440137943108420468
+    second: Jeep3_6
   - first:
-      213: -3024998468557845481
-    second: long_obstacles_6
-  - first:
-      213: -1916159222539959787
-    second: long_obstacles_7
-  - first:
-      213: 6958284684134585806
-    second: long_obstacles_8
-  - first:
-      213: 7559807262778285532
-    second: long_obstacles_9
+      213: 5021642746434634887
+    second: Jeep3_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,13 +124,55 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: long_obstacles_0
+      name: Jeep3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c9898c8bc342850800000000000000
+      internalID: 6351268138836335624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jeep3_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3deb6b2f0bd1cad30800000000000000
+      internalID: 4443959578131349203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jeep3_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 16
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74397216f113c2d30800000000000000
-      internalID: 4407952146132603719
+      spriteID: 68c2b5fc30621b070800000000000000
+      internalID: 8120313400931331206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: long_obstacles_1
+      name: Jeep3_3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 8
         y: 0
-        width: 32
-        height: 16
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +201,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef9a70eaf727ad390800000000000000
-      internalID: -7792790312505071106
+      spriteID: e8b2f30962ee10800800000000000000
+      internalID: 577004076676361102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: long_obstacles_2
+      name: Jeep3_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 16
+        x: 16
+        y: 8
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +222,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec48db495a0eafb50800000000000000
-      internalID: 6627856803398780110
+      spriteID: 359eda4345f5c4530800000000000000
+      internalID: 3840549397505894739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: long_obstacles_3
+      name: Jeep3_5
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 16
+        x: 24
+        y: 8
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,20 +243,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fc2a05424f0fa330800000000000000
-      internalID: 3724212194159242484
+      spriteID: 91696565db28e79b0800000000000000
+      internalID: -5080479579918395879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: long_obstacles_4
+      name: Jeep3_6
       rect:
         serializedVersion: 2
-        x: 128
+        x: 24
         y: 0
-        width: 32
-        height: 16
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,20 +264,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f71ae1fab5f9a17e0800000000000000
-      internalID: -1793946285424860801
+      spriteID: 473025d8b33ddbf20800000000000000
+      internalID: 3440137943108420468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: long_obstacles_5
+      name: Jeep3_7
       rect:
         serializedVersion: 2
-        x: 160
+        x: 16
         y: 0
-        width: 32
-        height: 16
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,92 +285,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3c72f80cfe84e510800000000000000
-      internalID: 1577542982619528250
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: long_obstacles_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 71c42838beb0506d0800000000000000
-      internalID: -3024998468557845481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: long_obstacles_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 512ca6fd65f6865e0800000000000000
-      internalID: -1916159222539959787
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: long_obstacles_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec512ebbd0bc09060800000000000000
-      internalID: 6958284684134585806
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: long_obstacles_9
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdd5154e6a4d9e860800000000000000
-      internalID: 7559807262778285532
+      spriteID: 784472ad87570b540800000000000000
+      internalID: 5021642746434634887
       vertices: []
       indices: 
       edges: []

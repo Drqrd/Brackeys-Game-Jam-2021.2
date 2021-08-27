@@ -1,37 +1,31 @@
 fileFormatVersion: 2
-guid: 3f3a0a2f062af7a4096121d1e95606a1
+guid: e97beefdfc0962540bcadcd45db0ccf1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4407952146132603719
-    second: long_obstacles_0
+      213: 8785309238603959101
+    second: Flatbed_0
   - first:
-      213: -7792790312505071106
-    second: long_obstacles_1
+      213: 7888261897251971464
+    second: Flatbed_1
   - first:
-      213: 6627856803398780110
-    second: long_obstacles_2
+      213: -1171413403973657504
+    second: Flatbed_2
   - first:
-      213: 3724212194159242484
-    second: long_obstacles_3
+      213: -2936191018511611038
+    second: Flatbed_3
   - first:
-      213: -1793946285424860801
-    second: long_obstacles_4
+      213: -7914644021044185148
+    second: Flatbed_4
   - first:
-      213: 1577542982619528250
-    second: long_obstacles_5
+      213: 7182485049072501021
+    second: Flatbed_5
   - first:
-      213: -3024998468557845481
-    second: long_obstacles_6
+      213: -9052003208862708960
+    second: Flatbed_6
   - first:
-      213: -1916159222539959787
-    second: long_obstacles_7
-  - first:
-      213: 6958284684134585806
-    second: long_obstacles_8
-  - first:
-      213: 7559807262778285532
-    second: long_obstacles_9
+      213: 2526392083366036281
+    second: Flatbed_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,13 +127,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: long_obstacles_0
+      name: Flatbed_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b42f8b430bbe970800000000000000
+      internalID: 8785309238603959101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flatbed_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 16
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74397216f113c2d30800000000000000
-      internalID: 4407952146132603719
+      spriteID: 881e3f8d66cb87d60800000000000000
+      internalID: 7888261897251971464
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: long_obstacles_1
+      name: Flatbed_2
       rect:
         serializedVersion: 2
-        x: 32
+        x: 8
         y: 0
-        width: 32
-        height: 16
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef9a70eaf727ad390800000000000000
-      internalID: -7792790312505071106
+      spriteID: 06cd40b27bd4ebfe0800000000000000
+      internalID: -1171413403973657504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: long_obstacles_2
+      name: Flatbed_3
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 16
+        x: 8
+        y: 8
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec48db495a0eafb50800000000000000
-      internalID: 6627856803398780110
+      spriteID: 26b4ce443dd8047d0800000000000000
+      internalID: -2936191018511611038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: long_obstacles_3
+      name: Flatbed_4
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 16
+        x: 16
+        y: 8
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fc2a05424f0fa330800000000000000
-      internalID: 3724212194159242484
+      spriteID: 4c7fdf94239892290800000000000000
+      internalID: -7914644021044185148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: long_obstacles_4
+      name: Flatbed_5
       rect:
         serializedVersion: 2
-        x: 128
+        x: 16
         y: 0
-        width: 32
-        height: 16
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f71ae1fab5f9a17e0800000000000000
-      internalID: -1793946285424860801
+      spriteID: d11458209105da360800000000000000
+      internalID: 7182485049072501021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: long_obstacles_5
+      name: Flatbed_6
       rect:
         serializedVersion: 2
-        x: 160
+        x: 24
         y: 0
-        width: 32
-        height: 16
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,20 +267,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3c72f80cfe84e510800000000000000
-      internalID: 1577542982619528250
+      spriteID: 02bca068a03d06280800000000000000
+      internalID: -9052003208862708960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: long_obstacles_6
+      name: Flatbed_7
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 16
+        x: 24
+        y: 8
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,71 +288,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71c42838beb0506d0800000000000000
-      internalID: -3024998468557845481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: long_obstacles_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 512ca6fd65f6865e0800000000000000
-      internalID: -1916159222539959787
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: long_obstacles_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec512ebbd0bc09060800000000000000
-      internalID: 6958284684134585806
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: long_obstacles_9
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdd5154e6a4d9e860800000000000000
-      internalID: 7559807262778285532
+      spriteID: 9334464e63c8f0320800000000000000
+      internalID: 2526392083366036281
       vertices: []
       indices: 
       edges: []
