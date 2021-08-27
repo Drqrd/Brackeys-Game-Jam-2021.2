@@ -35,6 +35,16 @@ public class PlayerNormal : PlayerState
         // if damaged, kill the player 
         if (playerRef.isDamaged) { playerRef.SetState(new PlayerDeath(playerRef, gameRef)); }
 
+        // if boosted, go to player boost
+        if (playerRef.isBoosted) { playerRef.SetState(new PlayerBoosted(playerRef, gameRef)); }
+
+        // If you are in a chain, start rage mode
+        if (playerRef.killCount >= playerRef.chain)
+        {
+            playerRef.killCount -= playerRef.chain;
+            playerRef.SetState(new PlayerRage(playerRef, gameRef));
+        }
+
         // if paused, pause. Else, do work
         if (gameRef.paused)
         {

@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
     public Rigidbody _rigidbody { get; private set; }
     public Collider _collider { get; private set; }
     public SpriteRenderer _renderer { get; private set; }
-
     public Player _player { get { return this; } }
     
     private Vector3 initialPosition;
@@ -31,6 +30,11 @@ public class Player : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField]
     public Sprite[] playerSprites;
+
+    [SerializeField]
+    [Tooltip("Number of Humans the Player kills to enter rage mode")]
+    [Range(1,20)]
+    public int chain = 10;
 
     /* - Movement - */
     [Header("Movement Keys")]
@@ -48,25 +52,25 @@ public class Player : MonoBehaviour
     [Range(4, 8)]
     private int maxJumpHeight = 4;
 
-    public float movementSpeed = 4f;
-
-
+    public float movementSpeed { get; set; }
 
     /* - Movement Effects - */
     private float slowEffect = 1f;
     public float SlowEffect { get { return slowEffect; } set { slowEffect = value; } }
+
 
     /* - Movement Logic - */
     public bool isGrounded { get; set; }
     private float distToGround;
     private float dtgErrorMargin = .01f;
     private float groundY;
-    
-
 
     /* - State + Logic - */
     public PlayerState currentState { get; private set; }
     public bool isDamaged { get; set; }
+    public bool isBoosted { get; set; }
+
+    public int killCount { get; set; }
 
     /* - Game Controller Reference - */
     private Main gameRef;
@@ -90,6 +94,8 @@ public class Player : MonoBehaviour
         // Various variables that need values at runtime
         distToGround = _collider.bounds.extents.y;
         initialPosition = transform.position;
+
+        movementSpeed = 4f;
 
         // Start in the paused state for the main menu
         SetState(new PlayerPaused(this, gameRef));
@@ -117,6 +123,10 @@ public class Player : MonoBehaviour
         if (currentState != null) { currentState.OnStateEnter(); }
     }
 
+    public void Boost()
+    {
+        if (currentState.type == "PlayerNormal") { isBoosted = true; }
+    }
 
 
     /* - Movement Functions - */
