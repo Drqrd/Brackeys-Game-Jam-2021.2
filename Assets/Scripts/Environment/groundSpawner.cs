@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 /// <summary>
 /*
 /// Last Modified: 8/24/21
@@ -26,7 +27,7 @@ public class groundSpawner : MonoBehaviour
     [SerializeField] private Sprite[] blueGround;
 
 
-    private Sprite currentGround;
+    private Sprite[] currentGrounds;
     private obstaclesSpawn obstSpawner;
     private Main gameRef;
     private Vector3 playerPos;
@@ -81,7 +82,7 @@ public class groundSpawner : MonoBehaviour
         this.setGroundSprite();
         for(int spawnedCount = 0; spawnedCount < Random.Range(spawnDistance_break, spawnDistance_break * 5); spawnedCount++ ){ 
             GameObject groundSpawned = Instantiate(groundPrefab);
-            groundSpawned.GetComponent<SpriteRenderer>().sprite = currentGround;
+            groundSpawned.GetComponent<SpriteRenderer>().sprite = currentGrounds[Random.Range(0, currentGrounds.Length - 1)];
             groundSpawned.transform.position = newGroundPos;
             groundSpawned.transform.parent = this.gameObject.transform;
             this.spawnBedrockLayer(newGroundPos);
@@ -121,11 +122,11 @@ public class groundSpawner : MonoBehaviour
     private void setGroundSprite(){
         int drawNum = Random.Range(0, 100);
         if(drawNum < 10)
-            currentGround = blueGround[ Random.Range(0, blueGround.Length - 1) ];
+            currentGrounds = blueGround;
         else if(drawNum >= 10 && drawNum < 25)
-            currentGround = brownGround[ Random.Range(0, brownGround.Length - 1) ];
+            currentGrounds = brownGround;
         else
-            currentGround = greenGround[Random.Range(0, greenGround.Length - 1) ];
+            currentGrounds = greenGround;
     }
 
 
