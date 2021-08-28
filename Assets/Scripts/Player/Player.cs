@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -76,6 +74,7 @@ public class Player : MonoBehaviour
 
     /* - Game Controller Reference - */
     private Main gameRef;
+    public audioManager audioRef;
 
 
     /*-------------------------*/
@@ -92,6 +91,8 @@ public class Player : MonoBehaviour
         _collider = transform.GetChild(2).GetComponent<Collider>();
         _renderer = GetComponent<SpriteRenderer>();
         gameRef = GameObject.Find("GameController").GetComponent<Main>();
+        audioRef = GameObject.Find("AudioManager").GetComponent<audioManager>();
+
 
         // Various variables that need values at runtime
         distToGround = _collider.bounds.extents.y;
@@ -101,16 +102,18 @@ public class Player : MonoBehaviour
 
         // Start in the paused state for the main menu
         SetState(new PlayerRage(this, gameRef));
+        
     }
 
     /* - FixedUpdate for Rigidbody Physics / Movement - */
+
+
     private void FixedUpdate()
     {
         // movement script checks everytime if the player is grounded or not
         isGrounded = DetectGround();
         if (isGrounded) { groundY = transform.position.y; }
         currentState.Tick();
-
     }
 
     /* - State Functions - */
@@ -122,7 +125,10 @@ public class Player : MonoBehaviour
 
         currentState = state;
 
-        if (currentState != null) { currentState.OnStateEnter(); }
+        if (currentState != null){
+            currentState.OnStateEnter(); 
+            audioRef.playAudio("playerStateChange");
+        }
     }
 
     public void Boost()
@@ -144,6 +150,7 @@ public class Player : MonoBehaviour
     public void playerJump()
     {
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 1f * jumpPowerMultiplier);
+        audioRef.playAudio("playerJump");
     }
 
     private bool DetectGround()
@@ -158,6 +165,7 @@ public class Player : MonoBehaviour
         // returns true if either side detects ground
         return left || right;
     }
+
 
     public bool AtMaxJumpHeight()
     {

@@ -23,11 +23,14 @@ public abstract class Area : MonoBehaviour
     protected Rigidbody _rb;
     protected bool isEnabled;
 
+    protected audioManager audioRef;
+
     // Get player reference
     protected void Start()
     {
         playerRef = GameObject.Find("Player");
         gameRef = GameObject.Find("GameController");
+        audioRef = GameObject.Find("AudioManager").GetComponent<audioManager>();
         _rb = GetComponent<Rigidbody>();
     }
 

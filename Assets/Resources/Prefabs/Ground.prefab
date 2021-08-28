@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6214501272764276031}
   - component: {fileID: 6214501272764276025}
   - component: {fileID: 6214501272764276024}
-  - component: {fileID: 6017071285867753116}
+  - component: {fileID: 705860932367871729}
   m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
   groundFocus: 0
---- !u!65 &6017071285867753116
+--- !u!65 &705860932367871729
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

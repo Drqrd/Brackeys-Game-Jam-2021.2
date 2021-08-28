@@ -1,6 +1,24 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+/// <summary>
+/// 
+/// Last Modified: 8/25/21
+/// 
+/// Class: Game StatsButton (UI)
+///  
+/// Author: Shubham Tiwary
+///
+/// Description:
+///     Handles stats options: back and story, along with story toogle to jump across chapters
+///    
+
+
+/// </summary>
+
+
+
 public class statsBtn : MonoBehaviour
 {
     [SerializeField] private int statBtnID; //0 = back, 1= story, 2=left, 3= right
@@ -14,7 +32,6 @@ public class statsBtn : MonoBehaviour
 
     private void Start(){
         statsBar = transform.parent.transform.parent.GetComponent<statsLoader>();
-        
     }
 
 
@@ -33,6 +50,7 @@ public class statsBtn : MonoBehaviour
 
     private void OnMouseDown()
     {
+        statsBar.menuRef.GetComponent<mainMenu>().audioRef.playAudio("mouseClick");
         switch(statBtnID){
             case 0:
                 backBtn();
@@ -49,9 +67,10 @@ public class statsBtn : MonoBehaviour
 
     private void backBtn(){
         statsBar.menuRef.SetActive(true);
-        statsBar.canvasRef.SetActive(false);
+        statsBar.canvasStats.SetActive(false);
         statsBar.gameObject.SetActive(false);
         statsBar.storyBtn.SetActive(true);
+        statsBar.storyRef.SetActive(false);
         foreach(GameObject storyToogler in storyTooglers){
             storyToogler.SetActive(false);
         }

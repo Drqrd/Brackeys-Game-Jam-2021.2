@@ -50,6 +50,7 @@ public class HumanArea : Area
     private void KillHuman()
     {
         // Play blood animation
+        base.audioRef.playAudio("blood");
         GetComponent<ParticleSystem>().Play();
         GetComponent<SpriteRenderer>().enabled = false; 
     }

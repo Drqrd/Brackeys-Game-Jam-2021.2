@@ -31,7 +31,7 @@ public class ground : MonoBehaviour
         mainCam = Camera.main;
         cameraWidth = (mainCam.orthographicSize * 2) * (mainCam.aspect);
         groundFocus = setGround_focus();
-        groundObject_width = GetComponent<Collider>().bounds.size.x;   
+        groundObject_width = 1f; 
     }
 
 

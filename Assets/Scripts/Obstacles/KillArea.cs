@@ -17,6 +17,8 @@ public class KillArea : Area
     private int points = 500;
 
     private Sprite[] desSprites;
+
+
     new private void Start()
     {
         base.Start();
@@ -53,6 +55,7 @@ public class KillArea : Area
     private void BreakObject()
     {
         // Disable sprite renderer
+        base.audioRef.playAudio("explosion");
         GetComponent<SpriteRenderer>().enabled = false;
 
         Transform t = transform.Find("Particle System");

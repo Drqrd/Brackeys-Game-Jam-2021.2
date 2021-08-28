@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 
@@ -63,6 +62,7 @@ public class Main : MonoBehaviour
     public static int points { get; private set; }
 
     //References to GameObjects
+    public GameObject distanceStat;
     private Player playerRef;
 
 
@@ -116,7 +116,7 @@ public class Main : MonoBehaviour
             }
         }
         else { Time.timeScale = 0f; }
-        
+        this.setPlayerDistance_gameStat();  
     }
 
     /* - Game Speed Function - */
@@ -136,7 +136,12 @@ public class Main : MonoBehaviour
 
     /*-------------------------*/
 
+    public void setPlayerDistance_gameStat(){
+        distanceStat.transform.GetChild(0).gameObject.GetComponent<Text>().text = (int)distanceTraveled + "m";
+    }
+
     public void loadEndGame_stats(){
+        distanceStat.SetActive(false);
         statsBar.SetActive(true);
         statsBar.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, statsBar.transform.position.z);
         statsBar.GetComponent<statsLoader>().setGameData_stats(distanceTraveled, playerRef.killCount, playerRef.obstaclesDestroyed, timeElapsed);
