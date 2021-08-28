@@ -63,6 +63,7 @@ public class Main : MonoBehaviour
 
     //References to GameObjects
     public GameObject distanceStat;
+    public GameObject scoreStat;
     private Player playerRef;
 
 
@@ -89,7 +90,7 @@ public class Main : MonoBehaviour
 
         // values for teleporting obstacles
         //              the center position                1/2 the extent of what the camera sees in world position      padding
-        leftBound     = Camera.main.transform.position.x - (Camera.main.orthographicSize * Screen.width / Screen.height) - 2f;
+        leftBound = Camera.main.transform.position.x - (Camera.main.orthographicSize * Screen.width / Screen.height) - 2f;
         teleportPoint = Camera.main.transform.position.x + (Camera.main.orthographicSize * Screen.width / Screen.height) + 2f;
 
 
@@ -131,20 +132,20 @@ public class Main : MonoBehaviour
     public void AddPoints(int p)
     {
         points += p;
-        //Debug.Log(points);
     }
 
     /*-------------------------*/
 
     public void setPlayerDistance_gameStat(){
         distanceStat.transform.GetChild(0).gameObject.GetComponent<Text>().text = (int)distanceTraveled + "m";
+        scoreStat.transform.GetChild(0).gameObject.GetComponent<Text>().text = (int)points + "pts";
     }
 
     public void loadEndGame_stats(){
         distanceStat.SetActive(false);
         statsBar.SetActive(true);
         statsBar.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, statsBar.transform.position.z);
-        statsBar.GetComponent<statsLoader>().setGameData_stats(distanceTraveled, playerRef.killCount, playerRef.obstaclesDestroyed, timeElapsed);
+        statsBar.GetComponent<statsLoader>().setGameData_stats(distanceTraveled, playerRef.killCount, playerRef.obstaclesDestroyed, timeElapsed, points);
         statsBar.GetComponent<statsLoader>().loadEndGame_stats();
     }
 

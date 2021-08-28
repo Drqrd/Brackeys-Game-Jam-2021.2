@@ -75,7 +75,7 @@ public class statsLoader : MonoBehaviour
         }   
         gameData_list = new ArrayList();
         gameData_list.Add(gameData.ID); gameData_list.Add(gameData.travelled);
-        gameData_list.Add(gameData.killed); gameData_list.Add(gameData.died);
+        gameData_list.Add(gameData.killed); gameData_list.Add(gameData.score);
         gameData_list.Add(gameData.destroyed); gameData_list.Add(gameData.runtime);
     }
 
@@ -84,12 +84,12 @@ public class statsLoader : MonoBehaviour
         File.WriteAllText(Application.dataPath + "/Resources/Data/gamedata.json", gamedataJson);
     }
 
-    public void setGameData_stats(float travelled, int killed, int destroyed, float runtime){
+    public void setGameData_stats(float travelled, int killed, int destroyed, float runtime, int points){
         gameData = new GameData();
         gameData.ID = "Enyor-15";
         gameData.travelled =  (int) travelled;
         gameData.killed = killed;
-        gameData.died = 1;
+        gameData.score = points;
         gameData.destroyed = destroyed;
         gameData.runtime = runtime;
     }
@@ -100,7 +100,7 @@ public class statsLoader : MonoBehaviour
         load_gameData();
         gameData.travelled += currentGamedata.travelled;
         gameData.killed += currentGamedata.killed;
-        gameData.died += currentGamedata.died;
+        gameData.score += currentGamedata.score;
         gameData.destroyed += currentGamedata.destroyed;
         gameData.runtime += currentGamedata.runtime;
         save_gameData();  

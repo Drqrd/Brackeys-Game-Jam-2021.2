@@ -4,7 +4,7 @@ public class GameData{
     public string ID;
     public int travelled;
     public int killed;
-    public int died;
+    public int score;
     public int destroyed;
     public float runtime;
 
@@ -19,7 +19,7 @@ public static class DataUtility
         newGameData.ID = source.ID;
         newGameData.travelled = source.travelled;
         newGameData.killed = source.killed;
-        newGameData.died = source.died;
+        newGameData.score = source.score;
         newGameData.destroyed = source.destroyed;
         newGameData.runtime = source.runtime;
         return newGameData;
@@ -30,7 +30,7 @@ public static class DataUtility
             return "ID : "  + gameData.ID + 
                 "     Travelled: " + gameData.travelled + 
                 "     Killed: " + gameData.killed + 
-                "     Died: " + gameData.died + 
+                "     Died: " + gameData.score + 
                 "     Destroyed: " + gameData.destroyed + 
                 "     Runtime: " + gameData.runtime;
     }

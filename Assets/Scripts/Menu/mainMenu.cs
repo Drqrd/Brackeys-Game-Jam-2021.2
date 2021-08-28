@@ -90,6 +90,7 @@ public class mainMenu : MonoBehaviour
         gameRef.paused = false;
         statsHolder.SetActive(false);
         gameRef.distanceStat.SetActive(true);
+        gameRef.scoreStat.SetActive(true);
     }
 
     private void loadStats(){
