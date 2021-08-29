@@ -32,6 +32,14 @@ public abstract class Area : MonoBehaviour
         gameRef = GameObject.Find("GameController");
         audioRef = GameObject.Find("AudioManager").GetComponent<audioManager>();
         _rb = GetComponent<Rigidbody>();
+
+        foreach (Transform t in transform)
+        {
+            if (t.name.Contains("Collider"))
+            {
+                t.GetComponent<Collider>().isTrigger = true;
+            }
+        }
     }
 
     public abstract void Teleport();

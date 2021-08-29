@@ -1,5 +1,10 @@
 using UnityEngine;
 
+// For list
+using System.Collections.Generic;
+
+// For enumerators
+using System.Collections;
 
 /// <summary>
 /*
@@ -14,7 +19,7 @@ using UnityEngine;
             1. Measures distance travelled by player, if distance is more than spawnDistance_break variable, starts spawing from the furthest floor tile
             2. Checks if ground has passed camera, if it has it will be deleted; 
 /// 
-*/ 
+*/
 /// </summary>
 
 public class groundSpawner : MonoBehaviour
@@ -44,8 +49,11 @@ public class groundSpawner : MonoBehaviour
     public Vector3 furthestGroundPos;
     private float lowestSpawnLevel;
     private float highestSpawnLevel = 1f;
-     
-    
+
+    /*-------------------------------------*/
+    /* Justin D'Errico edits for bugfixing */
+    private List<BoxCollider> bcs;
+    /*-------------------------------------*/
 
 
     private void Start()
@@ -54,10 +62,15 @@ public class groundSpawner : MonoBehaviour
         obstSpawner = GetComponent<obstaclesSpawn>();
         playerPos = GameObject.Find("Player").transform.position;
         lowestSpawnLevel = transform.GetChild(0).transform.position.y;
-    }
+        /*-------------------------------------*/
+        /* Justin D'Errico edits for bugfixing */
+        bcs = new List<BoxCollider>();
+        bcs.Add(transform.Find("Collider").GetComponent<BoxCollider>());
+        /*-------------------------------------*/
+}
 
-    
-    private void Update()
+
+private void Update()
     {
         if(!gameRef.paused)
             this.setDistance_travelledFrom_lastPoint();
@@ -67,7 +80,7 @@ public class groundSpawner : MonoBehaviour
     private void setDistance_travelledFrom_lastPoint(){   
         if( gameRef.distanceTraveled - lastDist_point >= spawnDistance_break ){
             this.spawnGround();
-            this.destroyUsed_ground();
+            StartCoroutine(this.destroyUsed_ground());
             lastDist_point = gameRef.distanceTraveled;
         }       
     }
@@ -80,7 +93,15 @@ public class groundSpawner : MonoBehaviour
         Vector3 newGroundPos = new Vector3(furthestGroundPos.x + 1, spawnLevel, furthestGroundPos.z);
         obstSpawner.spawnObstacle(newGroundPos);
         this.setGroundSprite();
-        for(int spawnedCount = 0; spawnedCount < Random.Range(spawnDistance_break, spawnDistance_break * 5); spawnedCount++ ){ 
+
+        /*-------------------------------------*/
+        /* Justin D'Errico edits for bugfixing */
+        // Accessible variable for collider stuff
+        int randRange = (int)Random.Range(spawnDistance_break, spawnDistance_break * 5);
+        /*-------------------------------------*/
+        
+        // ^- Put here with an int cast -----------.
+        for (int spawnedCount = 0; spawnedCount < randRange; spawnedCount++ ){ 
             GameObject groundSpawned = Instantiate(groundPrefab);
             groundSpawned.GetComponent<SpriteRenderer>().sprite = currentGrounds[Random.Range(0, currentGrounds.Length - 1)];
             groundSpawned.transform.position = newGroundPos;
@@ -88,6 +109,10 @@ public class groundSpawner : MonoBehaviour
             this.spawnBedrockLayer(newGroundPos);
             newGroundPos.x ++;
         }
+        /*-------------------------------------*/
+        /* Justin D'Errico edits for bugfixing */
+        SpawnCollider(randRange, newGroundPos);
+        /*-------------------------------------*/
     }
 
 
@@ -133,19 +158,77 @@ public class groundSpawner : MonoBehaviour
 
 
     //DESTROY
-    private void destroyUsed_ground(){
+    private IEnumerator destroyUsed_ground(){
         for(int childCount = 0; childCount < transform.childCount; childCount++){
-            GameObject groundChild = transform.GetChild(childCount).gameObject;
-            ground groundChildScript = groundChild.GetComponent<ground>();
-            groundChildScript.mainCam = Camera.main;
-            groundChildScript.groundFocus = groundChildScript.setGround_focus();
-            if(groundChildScript.groundFocus == 0){
-                Destroy(groundChild);
+            
+            // Execute if not the collider 
+            if (!transform.GetChild(childCount).name.Contains("Collider"))
+            {
+                GameObject groundChild = transform.GetChild(childCount).gameObject;
+                ground groundChildScript = groundChild.GetComponent<ground>();
+                groundChildScript.mainCam = Camera.main;
+                groundChildScript.groundFocus = groundChildScript.setGround_focus();
+                if (groundChildScript.groundFocus == 0)
+                {
+                    Destroy(groundChild);
+                }
             }
-                
+
+
+            /*-------------------------------------*/
+            /* Justin D'Errico edits for bugfixing */
+            DestroyCollider();
+            /*-------------------------------------*/
+            yield return 0;
         }
     }
 
+    /*-------------------------------------*/
+    /* Justin D'Errico edits for bugfixing */
+    // Spawn collider to bugfix the friction bug
+    private void SpawnCollider(int randRange, Vector3 newGroundPos)
+    {
+        GameObject collider = new GameObject("Collider");
+        collider.transform.parent = transform;
+        BoxCollider bc = collider.AddComponent<BoxCollider>();
+        bcs.Add(bc);
+        bc.size = new Vector2(randRange, newGroundPos.y - lowestSpawnLevel);
+        bc.center = new Vector2(newGroundPos.x - randRange / 2f - 0.5f, (newGroundPos.y + lowestSpawnLevel) /2f + 0.5f);
+        bc.material = Resources.Load<PhysicMaterial>("PhysicMaterials/NoFriction");
+    }
 
-    
+    // Destroy collider if its center is past the left of the camera
+    private void DestroyCollider()
+    {
+        float halfCamera = Camera.main.orthographicSize * Screen.width / Screen.height;
+        float deleteZone = Camera.main.transform.position.x - halfCamera;
+
+        int count = 0;
+        // For each boxCollider in the list
+        foreach(BoxCollider bc in bcs)
+        {
+            // If the right most of the box collider is past the delete zone
+            if (bc.center.x + bc.bounds.size.x < deleteZone)
+            {
+                count++;
+            }
+        }
+
+        Debug.Log("BC SIZE: " + bcs.Count);
+        Debug.Log("INDEX SIZE: " + count);
+
+
+        // Destroy after iterating
+        for(int i = 0; i < count; i++)
+        {
+            // Destroy the gameObject the boxCollider is attached to
+            Destroy(bcs[0].gameObject);
+
+            // Remove the box collider from the list
+            bcs.RemoveAt(0);
+        }
+        Debug.Log("BC SIZE: " + bcs.Count); 
+    }
+
+    /*-------------------------------------*/
 }

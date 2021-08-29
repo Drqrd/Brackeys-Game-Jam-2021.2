@@ -25,7 +25,6 @@ public class ground : MonoBehaviour
     private float cameraWidth;
     private float groundObject_width;
 
-
     void Start()
     {
         mainCam = Camera.main;
@@ -33,6 +32,18 @@ public class ground : MonoBehaviour
         groundFocus = setGround_focus();
         groundObject_width = 1f; 
     }
+
+    /*-------------------------------------*/
+    /* Justin D'Errico edits for bugfixing */
+    // Will execute every time a new object is loaded
+    void Awake()
+    {
+        mainCam = Camera.main;
+        cameraWidth = (mainCam.orthographicSize * 2) * (mainCam.aspect);
+        groundFocus = setGround_focus();
+        groundObject_width = 1f;
+    }
+    /*-------------------------------------*/
 
 
     public int setGround_focus(){

@@ -18,20 +18,31 @@ public class KillArea : Area
 
     private Sprite[] desSprites;
 
+    private bool breaking = false;
 
     new private void Start()
     {
         base.Start();
 
-        desSprites = Resources.LoadAll<Sprite>("Sprites/Obstacles/Individual/" + desName + "/");
+        desSprites = Resources.LoadAll<Sprite>("Sprites/Obstacles/Individual/" + desName);
 
         // 8 different particles
         for (int i = 0; i < 8; i++)
         {
             GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Particle System"), transform.Find("Particle System"));
+            
+            // Convert sprite to texture for material for particle system
+            Sprite sprite = desSprites[i];
+            Texture2D texture = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
+            Color[] pixels = sprite.texture.GetPixels((int)sprite.textureRect.x,
+                                                      (int)sprite.textureRect.y,
+                                                      (int)sprite.textureRect.width,
+                                                      (int)sprite.textureRect.height);
+            texture.SetPixels(pixels);
+            texture.Apply();
 
             Material material = new Material(Shader.Find("Standard"));
-            material.mainTexture = desSprites[i].texture;
+            material.mainTexture = texture;
 
             obj.GetComponent<ParticleSystemRenderer>().material = material;
         }
@@ -54,17 +65,21 @@ public class KillArea : Area
 
     private void BreakObject()
     {
-        // Disable sprite renderer
-        base.audioRef.playAudio("explosion");
-        GetComponent<SpriteRenderer>().enabled = false;
-
-        Transform t = transform.Find("Particle System");
-        foreach (Transform child in t)
+        if (!breaking)
         {
-            child.GetComponent<ParticleSystem>().Play();
-        }
+            breaking = true;
+            // Disable sprite renderer
+            base.audioRef.playAudio("explosion");
+            GetComponent<SpriteRenderer>().enabled = false;
 
-        gameRef.GetComponent<Main>().AddPoints(points);
+            Transform t = transform.Find("Particle System");
+            foreach (Transform child in t)
+            {
+                child.GetComponent<ParticleSystem>().Play();
+            }
+
+            gameRef.GetComponent<Main>().AddPoints(points);
+        }
     }
 
 

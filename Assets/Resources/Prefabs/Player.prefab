@@ -86,7 +86,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.625, y: 0.25, z: 1}
+  m_Size: {x: 0.625, y: 0.24, z: 1}
   m_Center: {x: 0.06, y: -0.19, z: 0}
 --- !u!1 &5776499618042629881
 GameObject:
@@ -180,10 +180,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6437837922908a247a77798438fe24fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSprites: []
+  chain: 10
   up: 32
   jumpPowerMultiplier: 15
-  gravity: 36.8
   maxJumpHeight: 4
+  audioRef: {fileID: 0}
 --- !u!54 &9108670402251707158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -238,7 +240,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1646390163
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -771370496301778581, guid: 63536f11c493f7a42b7123772e987e89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
