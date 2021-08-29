@@ -53,4 +53,10 @@ public class PlayerRage : PlayerState
         // Make sure any damage incurred doesnt stay after exitting
         playerRef.isDamaged = false;
     }
+
+    private IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(8f);
+
+    }
 }

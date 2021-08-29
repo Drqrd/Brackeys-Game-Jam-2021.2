@@ -93,7 +93,6 @@ public class Main : MonoBehaviour
         leftBound = Camera.main.transform.position.x - (Camera.main.orthographicSize * Screen.width / Screen.height) - 2f;
         teleportPoint = Camera.main.transform.position.x + (Camera.main.orthographicSize * Screen.width / Screen.height) + 2f;
 
-
         points = 0;
     }
 

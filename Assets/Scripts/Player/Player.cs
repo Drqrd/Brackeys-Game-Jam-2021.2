@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
     // Moves the player up when key is pressed
     public void movePlayer()
     {
-        _rigidbody.velocity = new Vector2( movementSpeed, _rigidbody.velocity.y);
+        _rigidbody.velocity = new Vector2( movementSpeed * 1.1f, _rigidbody.velocity.y);
         Camera.main.transform.position += new Vector3(_rigidbody.velocity.x, 0f, 0f) * Time.deltaTime;
         gameRef.distanceTraveled =  Mathf.Sqrt(Mathf.Pow(transform.position.x - initialPosition.x, 2));
     }
