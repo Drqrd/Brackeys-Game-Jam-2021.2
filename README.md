@@ -3,7 +3,7 @@ Author: Justin D'Errico & Shubham Tiwary <br>
 Created: August, 2021 - August, 2021 <br>
 
 <h2> Goal </h2>
-The Brackeys Game Jam is a week long event in which aspiring game developers work and can collaborate with eachother in making a video game! My objective in the game jam was to learn about new topics, try and foster some creativity with the selected topic (Let there be chaos!), and most importantly, to 
+The Brackeys Game Jam is a week long event in which aspiring game developers work and can collaborate with eachother in making a video game! My objective in the game jam was to learn about new topics, try and foster some creativity with the selected topic (Let there be chaos!), and most importantly, to develop my ability to collaborate with others effectively.
  
 <h2> Interesting Aspects </h2>
 <h3> Finite State Machines </h3>
